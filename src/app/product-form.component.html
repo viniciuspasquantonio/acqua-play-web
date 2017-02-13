@@ -5,7 +5,7 @@
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" 
                required 
-               [(ngModel)]="model.name" name="name" 
+               [(ngModel)]="product.name" name="name" 
                #name="ngModel">
         <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
           Name is required
@@ -15,7 +15,7 @@
         <label for="description">Description</label>
         <input type="text" class="form-control" id="description" 
                required 
-               [(ngModel)]="model.description" name="description" 
+               [(ngModel)]="product.description" name="description" 
                #description="ngModel">
         <div [hidden]="description.valid || description.pristine" class="alert alert-danger">
           Description is required
@@ -25,13 +25,13 @@
         <label for="value">Value R$</label>
         <input type="text" class="form-control" id="value" 
                required 
-               [(ngModel)]="model.value" name="value" 
+               [(ngModel)]="product.value" name="value" 
                #value="ngModel">
         <div [hidden]="value.valid || value.pristine" class="alert alert-danger">
           Value is required
         </div>        
       </div>      
-      <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-success" [disabled]="!productForm.form.valid" (click)="save(product);">Save</button>
 
     </form>
     <button type="button" class="btn btn-default" (click)="newProduct(); productForm.reset()">New Product</button>
