@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductFormComponent } from './product/product-form.component';
 import { AdDetailComponent } from './ad/ad-detail.component';
+import { HomeComponent } from './home/home.component';
 import { ProductService } from './product/product.service';
 import { AdService } from './ad/ad.service';
 import {AdSearchService} from './ad/ad-search.service';
@@ -21,7 +22,8 @@ import {AdRoutingModule} from './ad/ad-routing.module';
     AppComponent,
     ProductFormComponent,
     AdDetailComponent,
-    AdSearchComponent
+    AdSearchComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import {AdRoutingModule} from './ad/ad-routing.module';
   providers: [
                 ProductService,
                 AdService,
-                AdSearchService
+                AdSearchService                
               ],
   bootstrap: [AppComponent]
 })
