@@ -13,33 +13,33 @@ export class AdService {
     let ad$ = this.http
       .get(`${this.baseUrl}/ads`, {headers: this.getHeaders()})
       .map(mapAds)
-      .catch(handleError);
+      .catch(handleErrors);
       console.log("ads$ ",ad$);
       return ad$;
   }
 
   get(id: number): Observable<Ad> {
-    let person$ = this.http
+    let ad$ = this.http
       .get(`${this.baseUrl}/ads/${id}`, {headers: this.getHeaders()})
-      .map(mapAd);
-      return person$;
+      .map(mapAd)
+      .catch(handleErrors);
+      return ad$;      
   }
 
   create(ad: Ad): Promise<Ad> {
-    return this.http
+     return this.http
       .post(this.adsUrl, JSON.stringify(ad), {headers: this.getHeaders()})
       .toPromise()
       .then(res => res.json().data)
-      .catch(this.handleError);
+      .catch(this.handleError);     
   }
 
-  update(ad: Ad): Promise<Ad> {
-    const url = `${this.adsUrl}/${ad.id}`;
+  update(ad: Ad): Promise<Ad> {    
     return this.http
-      .put(url, JSON.stringify(ad), {headers: this.getHeaders()})
+      .put(this.adsUrl, JSON.stringify(ad), {headers: this.getHeaders()})
       .toPromise()
-      .then(() => ad)
-      .catch(this.handleError);
+      .then(res => res.json().data)
+      .catch(this.handleError); 
   }
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
@@ -56,8 +56,7 @@ export class AdService {
  }
  function mapAds(response:Response): Ad[]{
    // The response of the API has a results
-   // property with the actual results
-   
+   // property with the actual results  
    return response.json()._embedded.ads;
   }
 
@@ -77,7 +76,7 @@ function mapAd(response:Response): Ad{
 }
 
 // this could also be a private method of the component class
-function handleError (error: any) {
+function handleErrors (error: any) {
   // log error
   // could be something more sofisticated
   let errorMsg = error.message || `Yikes! There was was a problem with our hyperdrive device and we couldn't retrieve your data!`
