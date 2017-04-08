@@ -11,8 +11,8 @@ import { AdDetailComponent } from './ad/ad-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ProductService } from './product/product.service';
 import { AdService } from './ad/ad.service';
-import {AdSearchService} from './ad/ad-search.service';
-import {AdSearchComponent} from './ad/ad-search.component';
+
+import {AdListComponent} from './ad/ad-list.component';
 import {AdRoutingModule} from './ad/ad-routing.module';
 
 
@@ -22,7 +22,7 @@ import {AdRoutingModule} from './ad/ad-routing.module';
     AppComponent,
     ProductFormComponent,
     AdDetailComponent,
-    AdSearchComponent,
+    AdListComponent,
     HomeComponent
   ],
   imports: [
@@ -35,8 +35,8 @@ import {AdRoutingModule} from './ad/ad-routing.module';
   ],
   providers: [
                 ProductService,
-                AdService,
-                AdSearchService                
+                AdService
+                                
               ],
   bootstrap: [AppComponent]
 })
