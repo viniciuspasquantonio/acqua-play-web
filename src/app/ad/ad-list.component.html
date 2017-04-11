@@ -1,4 +1,4 @@
-<!-- /.search-row -->
+
     <div class="main-container">
         <div class="container">
             <div class="row">
@@ -182,7 +182,7 @@
                             </div>
                             <div *ngIf="errorMessage">
                                     {{errorMessage}}
-                                </div>
+                            </div>
                             <!--/.item-list-->
                             <div class="item-list" *ngFor="let ad of ads; let i = index;">
                                 <div class="col-sm-2 no-padding photobox">
@@ -195,8 +195,11 @@
                                 <!--/.photobox-->
                                 <div class="col-sm-7 add-desc-box">
                                     <div class="add-details">
-                                        <h5 class="add-title"><a href="ads-details.html">
-                                            {{ad.title }}</a></h5>
+                                        <h5 class="add-title">
+                                            <a [routerLink]="['/ads/info', ad.id]">
+                                                {{ad.title }}
+                                            </a>
+                                        </h5>
                                         <span class="info-row"> <span class="add-type business-ads tooltipHere" data-toggle="tooltip"
                                                                       data-placement="right" title="Business Ads">B </span> <span class="date"><i
                                                 class=" icon-clock"> </i> Today 1:21 pm </span> - <span class="category">Electronics </span>- <span

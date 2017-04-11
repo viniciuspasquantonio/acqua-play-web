@@ -5,25 +5,24 @@ import { Ad } from './ad.model';
 
 @Injectable()
 export class AdService {
-	private adsUrl = 'http://localhost:8080/ads';  // URL to web api  
+	private adsUrl = 'http://localhost:8080/ads/';  // URL to web api  
   private baseUrl: string = 'http://localhost:8080/';
 	constructor(private http: Http) { }
 
    getAll(): Observable<Ad[]>{
-    let ad$ = this.http
-      .get(`${this.baseUrl}/ads`, {headers: this.getHeaders()})
+    return this.http
+      .get(this.adsUrl, {headers: this.getHeaders()})
       .map(mapAds)
-      .catch(handleErrors);
-      console.log("ads$ ",ad$);
-      return ad$;
+      .catch(handleErrors);      
+      
   }
 
   get(id: number): Observable<Ad> {
-    let ad$ = this.http
+    return this.http
       .get(`${this.baseUrl}/ads/${id}`, {headers: this.getHeaders()})
       .map(mapAd)
       .catch(handleErrors);
-      return ad$;      
+      
   }
 
   create(ad: Ad): Promise<Ad> {
@@ -47,7 +46,7 @@ export class AdService {
   }
    private getHeaders(){
     let headers = new Headers();
-    headers.append('Accept', 'application/json');
+    
     headers.append('Content-Type', 'application/json');
     
     return headers;
@@ -57,14 +56,15 @@ export class AdService {
  function mapAds(response:Response): Ad[]{
    // The response of the API has a results
    // property with the actual results  
-   return response.json()._embedded.ads;
+   return response.json();
   }
 
 function toAd(r:any): Ad{
   let ad = <Ad>({
+    id: r.id,
     title: r.title,
     description: r.description,
-    price: r.value
+    price: r.price
   });
   console.log('Parsed ad:', ad);
   return ad;
@@ -85,3 +85,5 @@ function handleErrors (error: any) {
   // throw an application level error
   return Observable.throw(errorMsg);
 }
+
+

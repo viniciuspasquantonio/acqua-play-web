@@ -28,12 +28,8 @@ export class AdListComponent implements OnInit {
     this.adService.getAll().subscribe(
          /* happy path */ a => this.ads = a,
          /* error path */ e => {
-console.log("logo irei ", e);
            this.errorMessage = e;},
          /* onComplete */ () => this.isLoading = false);
   }
-  gotoDetail(ad: Ad): void {
-    let link = ['/ads', ad.id];
-    this.router.navigate(link);
-  }
+
 }

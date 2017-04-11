@@ -14,6 +14,7 @@ import { AdService } from './ad/ad.service';
 
 import {AdListComponent} from './ad/ad-list.component';
 import {AdRoutingModule} from './ad/ad-routing.module';
+import {AdInfoComponent} from './ad/ad-info.component';
 
 
 
@@ -23,7 +24,8 @@ import {AdRoutingModule} from './ad/ad-routing.module';
     ProductFormComponent,
     AdDetailComponent,
     AdListComponent,
-    HomeComponent
+    HomeComponent,
+    AdInfoComponent,
   ],
   imports: [
     BrowserModule,

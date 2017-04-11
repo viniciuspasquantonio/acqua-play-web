@@ -31,7 +31,7 @@ export class AdDetailComponent {
 
 	
 	newAd() {
-    this.ad = new Ad();	    
+    	this.ad = new Ad();	    
 	}
 	save(): void {
 		if(this.ad.id){
