@@ -6,6 +6,7 @@ import { AdDetailComponent }  from './ad/ad-detail.component';
 import { HomeComponent }  from './home/home.component';
 import { AdInfoComponent }  from './ad/ad-info.component';
 import { LoginComponent }  from './login/login.component';
+import { RegisterComponent }  from './register/register.component';
 const routes: Routes = [
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'ads',  component: AdListComponent },
   { path: 'ads/new',  component: AdDetailComponent },
   { path: 'ads/info/:id', component: AdInfoComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
   
 ];
 @NgModule({
