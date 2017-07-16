@@ -7,6 +7,8 @@ import { HomeComponent }  from './home/home.component';
 import { AdInfoComponent }  from './ad/ad-info.component';
 import { LoginComponent }  from './login/login.component';
 import { RegisterComponent }  from './register/register.component';
+import { CanActivateViaOAuthGuard } from './oauth/can-activate-guard';
+
 const routes: Routes = [
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
