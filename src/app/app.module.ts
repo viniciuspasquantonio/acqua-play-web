@@ -13,6 +13,9 @@ import { ProductService } from './product/product.service';
 import { AdService } from './ad/ad.service';
 import {LoginService} from './login/login.service';
 import { CanActivateViaOAuthGuard } from './oauth/can-activate-guard';
+import { HeaderComponent } from './header/header.component';
+import { UserHeaderComponent } from './header/user/user-header.component';
+import { DefaultHeaderComponent } from './header/default/default-header.component';
 
 import {AdListComponent} from './ad/ad-list.component';
 import {AdRoutingModule} from './ad/ad-routing.module';
@@ -33,7 +36,10 @@ import {RegisterComponent} from './register/register.component';
     HomeComponent,
     AdInfoComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent,
+    UserHeaderComponent,
+    DefaultHeaderComponent
     
   ],
   imports: [

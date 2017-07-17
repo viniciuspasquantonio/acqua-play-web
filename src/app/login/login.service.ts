@@ -46,6 +46,7 @@ export class LoginService {
 
   public logout() {
      localStorage.removeItem('token');
+     
   }
 
   private getHeaders(){
@@ -54,6 +55,10 @@ export class LoginService {
      headers.append('Authorization', 'Basic ' + btoa(this.authUser + ':' + this.authPassword));
      
     return headers;
+  }
+
+   isLoggedIn() : Boolean{
+    return (localStorage.getItem("token") === null) ? false : true;
   }
 }
 
