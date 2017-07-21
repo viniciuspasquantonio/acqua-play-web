@@ -13,12 +13,18 @@ const routes: Routes = [
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
-  { path: 'ads',  component: AdListComponent },
+  { path: 'ads',  component: AdListComponent, canActivate: [
+    
+    CanActivateViaOAuthGuard
+  ]   },
   { path: 'ads/new',  component: AdDetailComponent, canActivate: [
     
     CanActivateViaOAuthGuard
   ] },
-  { path: 'ads/info/:id', component: AdInfoComponent },
+  { path: 'ads/info/:id', component: AdInfoComponent, canActivate: [
+    
+    CanActivateViaOAuthGuard
+  ]  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
   

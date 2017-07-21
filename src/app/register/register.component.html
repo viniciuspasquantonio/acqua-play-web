@@ -7,17 +7,45 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <form class="form-horizontal">
+                                 <form class="form-horizontal" (ngSubmit)="onSubmit()" #registerForm="ngForm">
                                     <fieldset>
-                                        
+                    
+                                        <div class="form-group required">
+                                            <label class="col-md-4 control-label">Usuário
+                                                <sup>*</sup></label>
 
+                                            <div class="col-md-6">
+                                                <input [(ngModel)]="user.username" name ="username" type="text" class="form-control" 
+                                                       placeholder="Usuário">
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label for="inputEmail3" class="col-md-4 control-label">Email
+                                                <sup>*</sup></label>
+
+                                            <div class="col-md-6">
+                                                <input [(ngModel)]="user.email" name="email" type="email" class="form-control" 
+                                                       placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label for="inputPassword3" class="col-md-4 control-label">Password </label>
+
+                                            <div class="col-md-6">
+                                                <input [(ngModel)]="user.password" name="password" type="password" class="form-control" 
+                                                       placeholder="Password">
+
+                                                <p class="help-block">At least 5 characters
+                                                    <!--Example block-level help text here.--></p>
+                                            </div>
+                                        </div>
                                         <!-- Text input-->
                                         <div class="form-group required">
                                             <label class="col-md-4 control-label">Nome <sup>*</sup></label>
 
                                             <div class="col-md-6">
-                                                <input name="" placeholder="Nome" class="form-control input-md"
-                                                       required="" type="text">
+                                                <input [(ngModel)]="user.firstName" name="firstName" placeholder="Nome" class="form-control input-md"
+                                                       required type="text">
                                             </div>
                                         </div>
 
@@ -26,8 +54,8 @@
                                             <label class="col-md-4 control-label">Sobrenome <sup>*</sup></label>
 
                                             <div class="col-md-6">
-                                                <input name="textinput" placeholder="Sobrenome"
-                                                       class="form-control input-md" type="text">
+                                                <input [(ngModel)]="user.lastName" name="lastName" placeholder="Sobrenome"
+                                                       class="form-control input-md" type="text" required>
                                             </div>
                                         </div>
 
@@ -36,39 +64,31 @@
                                             <label class="col-md-4 control-label">Telefone <sup>*</sup></label>
 
                                             <div class="col-md-6">
-                                                <input name="textinput" placeholder="Telefone"
+                                                <input [(ngModel)]="user.phone" name="phone" placeholder="Telefone"
                                                        class="form-control input-md" type="text">
 
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">
-                                                        <small> Esconder telefone nos anuncios publicados.</small>
-                                                    </label>
-                                                </div>
+                                                
                                             </div>
                                         </div>
 
-                                        
-
-                                    
+                                         <!-- Text input-->
                                         <div class="form-group required">
-                                            <label for="inputEmail3" class="col-md-4 control-label">Email
-                                                <sup>*</sup></label>
+                                            <label class="col-md-3 control-label">Apartamento <sup>*</sup></label>
 
-                                            <div class="col-md-6">
-                                                <input type="email" class="form-control" id="inputEmail3"
-                                                       placeholder="Email">
+                                            <div class="col-md-3">
+                                                <input [(ngModel)]="user.apartment" name="apartment" placeholder="Apartamento"
+                                                       class="form-control input-md" type="text">
+
+                                                
                                             </div>
-                                        </div>
-                                        <div class="form-group required">
-                                            <label for="inputPassword3" class="col-md-4 control-label">Password </label>
 
-                                            <div class="col-md-6">
-                                                <input type="password" class="form-control" id="inputPassword3"
-                                                       placeholder="Password">
+                                             <label class="col-md-2 control-label">Torre <sup>*</sup></label>
 
-                                                <p class="help-block">At least 5 characters
-                                                    <!--Example block-level help text here.--></p>
+                                            <div class="col-md-2">
+                                                <input [(ngModel)]="user.tower" name="tower" placeholder="Torre"
+                                                       class="form-control input-md" type="text">
+
+                                                
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -82,8 +102,13 @@
                                                         I have read and agree to the <a href="terms-conditions.html">Terms
                                                         & Conditions</a> </label>
                                                 </div>
-                                                <div style="clear:both"></div>
-                                                <a class="btn btn-primary" href="account-home.html">Register</a></div>
+                                             </div>
+                                              <!-- Button  -->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label"></label>
+
+                                                <div class="col-md-8"><button type="button" id="saveAdButton" [disabled]="!registerForm.form.valid" (click)="save(user);" class="btn btn-success btn-lg">Registrar</button></div>
+                                            </div>   
                                         </div>
                                     </fieldset>
                                 </form>

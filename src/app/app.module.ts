@@ -16,12 +16,15 @@ import { CanActivateViaOAuthGuard } from './oauth/can-activate-guard';
 import { HeaderComponent } from './header/header.component';
 import { UserHeaderComponent } from './header/user/user-header.component';
 import { DefaultHeaderComponent } from './header/default/default-header.component';
+import {UserService} from './user/user.service';
+
 
 import {AdListComponent} from './ad/ad-list.component';
 import {AdRoutingModule} from './ad/ad-routing.module';
 import {AdInfoComponent} from './ad/ad-info.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+
 
 
 
@@ -41,6 +44,7 @@ import {RegisterComponent} from './register/register.component';
     UserHeaderComponent,
     DefaultHeaderComponent
     
+    
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,8 @@ import {RegisterComponent} from './register/register.component';
                 ProductService,
                 AdService,
                 CanActivateViaOAuthGuard,
-                LoginService
+                LoginService,
+                UserService
                                 
               ],
   bootstrap: [AppComponent]

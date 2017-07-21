@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers} from '@angular/http';
+import { Http, Response, Headers,URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Ad } from './ad.model';
 
@@ -19,7 +19,7 @@ export class AdService {
 
   get(id: number): Observable<Ad> {
     return this.http
-      .get(`${this.baseUrl}/ads/${id}`, {headers: this.getHeaders()})
+      .get(`${this.baseUrl}/ads/${id}`, {search:this.getSearchParams(),headers: this.getHeaders()})
       .map(mapAd)
       .catch(handleErrors);
       
@@ -27,7 +27,7 @@ export class AdService {
 
   create(ad: Ad): Promise<Ad> {
      return this.http
-      .post(this.adsUrl, JSON.stringify(ad), {headers: this.getHeaders()})
+      .post(this.adsUrl, JSON.stringify(ad), {search:this.getSearchParams(),headers: this.getHeaders()})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);     
@@ -35,7 +35,7 @@ export class AdService {
 
   update(ad: Ad): Promise<Ad> {    
     return this.http
-      .put(this.adsUrl, JSON.stringify(ad), {headers: this.getHeaders()})
+      .put(this.adsUrl, JSON.stringify(ad), {search:this.getSearchParams(),headers: this.getHeaders()})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError); 
@@ -51,6 +51,12 @@ export class AdService {
     
     return headers;
   }
+  private getSearchParams(){
+      let params: URLSearchParams = new URLSearchParams();
+     params.set('access_token', localStorage.getItem("token")   );
+     return params;
+  }
+  
 
  }
  function mapAds(response:Response): Ad[]{
