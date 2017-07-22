@@ -4,6 +4,7 @@ import { Http , URLSearchParams , Response, Headers  } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Login } from './login.model';
 import { OauthTokenResponse } from '../oauth/oauth-token-response.model';
+import { User} from '../user/user.model';
 
 
 @Injectable()
@@ -18,7 +19,7 @@ export class LoginService {
   login(login:Login) : Observable<OauthTokenResponse> {
     
     let params: URLSearchParams = new URLSearchParams();
-     params.set('username', login.email );
+     params.set('username', login.username );
      params.set('password', login.password );
      params.set('grant_type', 'password' );
 
@@ -46,6 +47,8 @@ export class LoginService {
 
   public logout() {
      localStorage.removeItem('token');
+     localStorage.removeItem('user');
+
      
   }
 
@@ -59,6 +62,10 @@ export class LoginService {
 
    isLoggedIn() : Boolean{
     return (localStorage.getItem("token") === null) ? false : true;
+  }
+
+  currentUser() : User{
+    return JSON.parse(localStorage.getItem("user"));
   }
 }
 

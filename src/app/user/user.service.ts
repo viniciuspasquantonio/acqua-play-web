@@ -15,12 +15,18 @@ export class UserService {
 
   get(id: number): Observable<User> {
     return this.http
-      .get(`${this.baseUrl}/user/${id}`, {search:this.getSearchParams(),headers: this.getHeaders()})
+      .get(`${this.baseUrl}/user/${id}`, {headers: this.getHeaders()})
       .map(mapUser)
       .catch(handleErrors);
       
   }
-
+ findByUsername(username: string): Observable<User> {
+    return this.http
+      .get(`${this.baseUrl}/user/findByUsername/${username}`, {search:this.getSearchParams(),headers: this.getHeaders()})
+      .map(mapUser)
+      .catch(handleErrors);
+      
+  }
   create(user: User): Promise<User> {
      return this.http
       .post(this.userUrl, JSON.stringify(user), {search:this.getSearchParams(),headers: this.getHeaders()})
