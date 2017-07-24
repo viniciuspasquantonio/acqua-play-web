@@ -10,6 +10,9 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { AdService } from './ad.service';
 import { Ad } from './ad.model';
+import {HttpService} from '../oauth/auth-http.service';
+
+
 @Component({
   moduleId: module.id,
   selector: 'ad-list',
@@ -17,7 +20,9 @@ import { Ad } from './ad.model';
   providers: [AdService]
 })
 export class AdListComponent implements OnInit {
+  
   ads:Ad[] = [];
+  imgs:string[] = [];
   errorMessage: string = '';
   isLoading: boolean = true;
   constructor(
@@ -26,10 +31,27 @@ export class AdListComponent implements OnInit {
   
   ngOnInit(): void {
     this.adService.getAll().subscribe(
-         /* happy path */ a => this.ads = a,
+         /* happy path */ a => {
+                                    this.ads = a;
+                                    for (let ad of a) {
+                                        this.extractImageSrc(ad);
+                                    }
+                                   
+                                },
          /* error path */ e => {
            this.errorMessage = e;},
          /* onComplete */ () => this.isLoading = false);
   }
+
+  private extractImageSrc(ad:Ad)  {
+    console.log(ad);
+    this.adService.getImageSrc(ad).subscribe(
+         /* happy path */ imgUrl => {this.imgs[ad.id] = imgUrl;console.log(imgUrl)},
+         /* error path */ e => {
+           this.errorMessage = e;},
+         /* onComplete */ () => this.isLoading = false);
+    
+  }
+
 
 }

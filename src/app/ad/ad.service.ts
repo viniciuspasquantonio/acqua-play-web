@@ -2,30 +2,47 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers,URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Ad } from './ad.model';
+import {HttpService} from '../oauth/auth-http.service';
 
 @Injectable()
 export class AdService {
 	private adsUrl = 'http://localhost:8080/ads/';  // URL to web api  
   private baseUrl: string = 'http://localhost:8080/';
-	constructor(private http: Http) { }
+  private imgSrc = 'http://localhost:8080/upload/files/';  
+	constructor(private http: Http,private authHttp: HttpService) { }
 
    getAll(): Observable<Ad[]>{
-    return this.http
+    return this.authHttp
       .get(this.adsUrl, {headers: this.getHeaders()})
       .map(mapAds)
       .catch(handleErrors);      
       
   }
 
+  
+   getImageSrc(ad:Ad): Observable<any> {
+      console.log('ad to img ',ad);
+      return this.authHttp.get(this.imgSrc+ ad.images[0], {headers: this.getHeaders()})
+              .map(this.extractUrl)
+              .catch(handleErrors);  
+             
+     
+  }
+
+   extractUrl(res:Response):string {
+    return res.url;
+  }
+
   get(id: number): Observable<Ad> {
     return this.http
-      .get(`${this.baseUrl}/ads/${id}`, {search:this.getSearchParams(),headers: this.getHeaders()})
+      .get(`${this.baseUrl}/ads/${id}`, {headers: this.getHeaders()})
       .map(mapAd)
       .catch(handleErrors);
       
   }
 
   create(ad: Ad): Promise<Ad> {
+
      return this.http
       .post(this.adsUrl, JSON.stringify(ad), {search:this.getSearchParams(),headers: this.getHeaders()})
       .toPromise()
@@ -91,5 +108,7 @@ function handleErrors (error: any) {
   // throw an application level error
   return Observable.throw(errorMsg);
 }
+
+
 
 

@@ -187,9 +187,9 @@
                             <div class="item-list" *ngFor="let ad of ads; let i = index;">
                                 <div class="col-sm-2 no-padding photobox">
                                     <div class="add-image"><span class="photo-count"><i
-                                            class="fa fa-camera"></i> 2 </span> <a href="ads-details.html"><img
-                                            class="thumbnail no-margin" src="images/item/tp/Image00014.jpg"
-                                            alt="img"></a></div>
+                                            class="fa fa-camera"></i> 2 </span> <a href="ads-details.html">
+                                            <img src={{imgs[ad.id]}}>
+                                            </a></div>
                                 </div>
                                 
                                 <!--/.photobox-->

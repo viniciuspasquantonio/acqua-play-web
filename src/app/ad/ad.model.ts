@@ -9,4 +9,5 @@ export class Ad {
     type: number;
     products : Product[];
     services : Service[];
+    images : string[];
 }

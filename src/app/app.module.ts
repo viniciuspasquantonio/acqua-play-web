@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { UserHeaderComponent } from './header/user/user-header.component';
 import { DefaultHeaderComponent } from './header/default/default-header.component';
 import {UserService} from './user/user.service';
+import {HttpService} from './oauth/auth-http.service';
 
 
 import {AdListComponent} from './ad/ad-list.component';
@@ -45,13 +47,15 @@ import {RegisterComponent} from './register/register.component';
     DefaultHeaderComponent
     
     
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     JsonpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ImageUploadModule.forRoot()
      
   ],
   providers: [
@@ -59,7 +63,8 @@ import {RegisterComponent} from './register/register.component';
                 AdService,
                 CanActivateViaOAuthGuard,
                 LoginService,
-                UserService
+                UserService,
+                HttpService
                                 
               ],
   bootstrap: [AppComponent]
