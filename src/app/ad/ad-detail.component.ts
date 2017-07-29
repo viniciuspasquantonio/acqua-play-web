@@ -24,9 +24,7 @@ export class AdDetailComponent {
     	//private location: Location
   	) {}
   	
-  	private authUser = 'my-trusted-client';
-  
-  	private authPassword = 'secret';
+  	
 
 	@Input()
 	ad: Ad;
@@ -53,10 +51,13 @@ export class AdDetailComponent {
 		if(this.ad.id){
 			this.adService.update(this.ad);
 		}else{
-			this.adService.create(this.ad);
+			this.adService.create(this.ad).subscribe(
+         /* happy path */ a => {this.router.navigateByUrl('/ad-created');},
+         /* error path */ e => {
+           alert(e);});
 		}
 
-    this.router.navigate(['home']);
+    
   		
 	}
 

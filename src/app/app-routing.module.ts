@@ -8,6 +8,7 @@ import { AdInfoComponent }  from './ad/ad-info.component';
 import { LoginComponent }  from './login/login.component';
 import { RegisterComponent }  from './register/register.component';
 import { CanActivateViaOAuthGuard } from './oauth/can-activate-guard';
+import { AdCreatedComponent }  from './ad/ad-created.component';
 
 const routes: Routes = [
   
@@ -26,7 +27,8 @@ const routes: Routes = [
     CanActivateViaOAuthGuard
   ]  },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'ad-created', component: AdCreatedComponent }
   
 ];
 @NgModule({

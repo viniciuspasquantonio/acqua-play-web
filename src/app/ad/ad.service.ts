@@ -41,26 +41,21 @@ export class AdService {
       
   }
 
-  create(ad: Ad): Promise<Ad> {
+  create(ad: Ad): Observable<Ad> {
 
      return this.http
       .post(this.adsUrl, JSON.stringify(ad), {search:this.getSearchParams(),headers: this.getHeaders()})
-      .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError);     
+      .map(mapAd)
+      .catch(handleErrors);      
   }
 
-  update(ad: Ad): Promise<Ad> {    
+  update(ad: Ad): Observable<Ad> {    
     return this.http
       .put(this.adsUrl, JSON.stringify(ad), {search:this.getSearchParams(),headers: this.getHeaders()})
-      .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError); 
+      .map(mapAd)
+      .catch(handleErrors);  
   }
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
+  
    private getHeaders(){
     let headers = new Headers();
     

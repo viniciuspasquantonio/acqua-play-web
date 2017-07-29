@@ -26,6 +26,7 @@ import {AdRoutingModule} from './ad/ad-routing.module';
 import {AdInfoComponent} from './ad/ad-info.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import {AdCreatedComponent} from './ad/ad-created.component';
 
 
 
@@ -44,7 +45,8 @@ import {RegisterComponent} from './register/register.component';
     RegisterComponent,
     HeaderComponent,
     UserHeaderComponent,
-    DefaultHeaderComponent
+    DefaultHeaderComponent,
+    AdCreatedComponent
     
     
     
