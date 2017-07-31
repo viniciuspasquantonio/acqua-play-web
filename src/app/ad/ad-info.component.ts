@@ -4,8 +4,12 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gal
 
 
 
+
 import { Ad }    from './ad.model';
 import { AdService }    from './ad.service';
+
+import { User }    from '../user/user.model';
+import { UserService }    from '../user/user.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -18,12 +22,15 @@ import 'rxjs/add/operator/switchMap';
 })
 export class AdInfoComponent { 
 	ad:Ad = new Ad();
+  seller:User = new User();
   imgsUrl:string[] = [];
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[] = [];
   constructor(
     	private adService: AdService,      
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+       private userService: UserService
+
     	
   	) {}
 	
@@ -57,6 +64,7 @@ export class AdInfoComponent {
       .switchMap(params => this.adService.get(+params['id']))
       .subscribe(a => {
                         this.ad = a;
+                        this.userService.findByUsername(a.seller).subscribe(user => {this.seller = user});
                         for (var i = 0; i < a.images.length; i++) {
                           
                           this.adService.getImageSrc(a,i).subscribe(a => {
@@ -71,6 +79,8 @@ export class AdInfoComponent {
                         }
                         
                       });
+
+
 
       
   }

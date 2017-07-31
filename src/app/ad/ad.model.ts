@@ -10,4 +10,5 @@ export class Ad {
     products : Product[];
     services : Service[];
     images : string[];
+    seller: string;
 }

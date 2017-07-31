@@ -89,7 +89,8 @@ function toAd(r:any): Ad{
     title: r.title,
     description: r.description,
     price: r.price,
-    images: r.images
+    images: r.images,
+    seller: r.seller
   });
   console.log('Parsed ad:', ad);
   return ad;

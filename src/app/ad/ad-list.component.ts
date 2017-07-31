@@ -44,9 +44,11 @@ export class AdListComponent implements OnInit {
   }
 
   private extractImageSrc(ad:Ad)  {
-    console.log(ad);
+    if(!ad.images || ad.images.length == 0){
+      return;
+    }
     this.adService.getImageSrc(ad,0).subscribe(
-         /* happy path */ imgUrl => {this.imgs[ad.id] = imgUrl;console.log(imgUrl)},
+         /* happy path */ imgUrl => {this.imgs[ad.id] = imgUrl},
          /* error path */ e => {
            this.errorMessage = e;},
          /* onComplete */ () => this.isLoading = false);

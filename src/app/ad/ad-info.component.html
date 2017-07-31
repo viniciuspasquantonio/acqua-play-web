@@ -15,7 +15,7 @@
                 <div class="col-sm-9 page-content col-thin-right">
                     <div class="inner inner-box ads-details-wrapper">
                         <h2> {{ad.title}}
-                            <small class="label label-default adlistingtype">Company ad</small>
+                            
                         </h2>
                         <span class="info-row"> <span class="date"><i class=" icon-clock"> </i> Today 1:21 pm </span> - <span
                                 class="category">Electronics </span>- <span class="item-location"><i
@@ -82,38 +82,25 @@
                 <div class="col-sm-3  page-sidebar-right">
                     <aside>
                         <div class="panel sidebar-panel panel-contact-seller">
-                            <div class="panel-heading">Contact Seller</div>
+                            <div class="panel-heading">Informacoes do Anunciante</div>
                             <div class="panel-content user-info">
                                 <div class="panel-body text-center">
                                     <div class="seller-info">
-                                        <h3 class="no-margin">Richard Aki</h3>
+                                        <h3 class="no-margin"> {{seller.firstName}} {{seller.lastName}}</h3>
 
-                                        <p>Location: <strong>New York</strong></p>
+                                        <p>Apartamento: <strong>{{seller.appartment}} - {{seller.tower}}</strong></p>
 
-                                        <p> Joined: <strong>12 Mar 2009</strong></p>
+                                        
                                     </div>
                                     <div class="user-ads-action"><a href="#contactAdvertiser" data-toggle="modal"
                                                                     class="btn   btn-default btn-block"><i
-                                            class=" icon-mail-2"></i> Send a message </a> <a
-                                            class="btn  btn-info btn-block"><i class=" icon-phone-1"></i> 01680 531 352
+                                            class=" icon-mail-2"></i> Entre em contato </a> <a
+                                            class="btn  btn-info btn-block"><i class=" icon-phone-1"></i> {{seller.phone}}
                                     </a></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel sidebar-panel">
-                            <div class="panel-heading">Safety Tips for Buyers</div>
-                            <div class="panel-content">
-                                <div class="panel-body text-left">
-                                    <ul class="list-check">
-                                        <li> Meet seller at a public place</li>
-                                        <li> Check the item before you buy</li>
-                                        <li> Pay only after collecting the item</li>
-                                    </ul>
-                                    <p><a class="pull-right" href="#"> Know more <i
-                                            class="fa fa-angle-double-right"></i> </a></p>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!--/.categories-list-->
                     </aside>
                 </div>

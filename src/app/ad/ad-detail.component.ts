@@ -1,6 +1,7 @@
 import { Component,Input, OnInit } from '@angular/core';
 import { Router }   from '@angular/router';
 import { Headers,URLSearchParams} from '@angular/http';
+import { LoginService }    from '../login/login.service';
 
 
 import { Ad }    from './ad.model';
@@ -19,7 +20,8 @@ export class AdDetailComponent {
 
 	constructor(
     	private adService: AdService,
-      	private router: Router
+      	private router: Router,
+        private loginService: LoginService
     	//private route: ActivatedRoute,
     	//private location: Location
   	) {}
@@ -48,6 +50,7 @@ export class AdDetailComponent {
     	this.ad.images = [];	    
 	}
 	save(): void {
+    this.ad.seller = this.loginService.currentUser().username;
 		if(this.ad.id){
 			this.adService.update(this.ad);
 		}else{
