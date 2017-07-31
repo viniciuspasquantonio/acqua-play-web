@@ -28,6 +28,8 @@ import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {AdCreatedComponent} from './ad/ad-created.component';
 
+import { NgxGalleryModule } from 'ngx-gallery';
+
 
 
 
@@ -50,6 +52,7 @@ import {AdCreatedComponent} from './ad/ad-created.component';
     
     
     
+    
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import {AdCreatedComponent} from './ad/ad-created.component';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    NgxGalleryModule
      
   ],
   providers: [

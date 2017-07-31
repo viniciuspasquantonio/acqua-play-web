@@ -1,3 +1,4 @@
+
 <div class="main-container">
         <div class="container">
             <ol class="breadcrumb pull-left">
@@ -22,28 +23,19 @@
 
                         <div class="ads-image">
                             <h1 class="pricetag"> ${{ad.price}}</h1>
-                            <ul class="bxslider">
-                                <li><img src="images/item/tp-big/Image00014.jpg" alt="img"/></li>
-                                <li><img src="images/item/tp-big/Image00015.jpg" alt="img"/></li>
-                                <li><img src="images/item/tp-big/Image00013.jpg" alt="img"/></li>
-                            </ul>
-                            <div id="bx-pager">
-                                <a class="thumb-item-link" data-slide-index="0" href=""><img
-                                        src="images/item/tp/Image00014.jpg" alt="img"/></a>
-                                <a class="thumb-item-link" data-slide-index="1" href=""><img
-                                        src="images/item/tp/Image00015.jpg" alt="img"/></a>
-                                <a class="thumb-item-link" data-slide-index="2" href=""><img
-                                        src="images/item/tp/Image00013.jpg" alt="img"/></a>
-                            </div>
+
+                            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
                         </div>
                         <!--ads-image-->
+
+
 
                         <div class="Ads-Details">
                             <h5 class="list-title"><strong>Ads Detsils</strong></h5>
 
                             <div class="row">
                                 <div class="ads-details-info col-md-8">
-                                    {{ad.description}}}
+                                    {{ad.description}}
                                 </div>
                                 <div class="col-md-4">
                                     <aside class="panel panel-body panel-details">
@@ -239,3 +231,12 @@
         </div>
     </div>
 </div>
+<script src="assets/plugins/bxslider/jquery.bxslider.min.js"></script>
+<script>
+    console.log("cuida");
+    $('.bxslider').bxSlider({
+        pagerCustom: '#bx-pager'
+    });
+
+
+</script>

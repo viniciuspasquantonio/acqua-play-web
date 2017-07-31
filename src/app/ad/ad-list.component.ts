@@ -23,7 +23,7 @@ export class AdListComponent implements OnInit {
   
   ads:Ad[] = [];
   imgs:string[] = [];
-  errorMessage: string = '';
+  errorMessage: string = null;
   isLoading: boolean = true;
   constructor(
     private adService: AdService,
@@ -45,7 +45,7 @@ export class AdListComponent implements OnInit {
 
   private extractImageSrc(ad:Ad)  {
     console.log(ad);
-    this.adService.getImageSrc(ad).subscribe(
+    this.adService.getImageSrc(ad,0).subscribe(
          /* happy path */ imgUrl => {this.imgs[ad.id] = imgUrl;console.log(imgUrl)},
          /* error path */ e => {
            this.errorMessage = e;},

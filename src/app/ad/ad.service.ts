@@ -20,21 +20,27 @@ export class AdService {
   }
 
   
-   getImageSrc(ad:Ad): Observable<any> {
+   getImageSrc(ad:Ad, imageIndex:number): Observable<any> {
       console.log('ad to img ',ad);
-      return this.authHttp.get(this.imgSrc+ ad.images[0], {headers: this.getHeaders()})
+      if(!imageIndex){
+        imageIndex = 0;
+      }
+      return this.authHttp.get(this.imgSrc+ ad.images[imageIndex], {headers: this.getHeaders()})
               .map(this.extractUrl)
               .catch(handleErrors);  
              
      
   }
 
+  
+
    extractUrl(res:Response):string {
+    console.log(res.url);
     return res.url;
   }
 
   get(id: number): Observable<Ad> {
-    return this.http
+    return this.authHttp
       .get(`${this.baseUrl}/ads/${id}`, {headers: this.getHeaders()})
       .map(mapAd)
       .catch(handleErrors);
@@ -82,7 +88,8 @@ function toAd(r:any): Ad{
     id: r.id,
     title: r.title,
     description: r.description,
-    price: r.price
+    price: r.price,
+    images: r.images
   });
   console.log('Parsed ad:', ad);
   return ad;
