@@ -27,6 +27,10 @@ import {AdInfoComponent} from './ad/ad-info.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {AdCreatedComponent} from './ad/ad-created.component';
+import {AccountHomeComponent} from './account-home/account-home.component';
+import {AccountDetailComponent} from './account-home/detail/account-detail.component';
+import {AccountAdsComponent} from './account-home/ads/account-ads.component';
+import {AccountPendingAdsComponent} from './account-home/pending-ads/account-pending-ads.component';
 
 import { NgxGalleryModule } from 'ngx-gallery';
 
@@ -48,7 +52,11 @@ import { NgxGalleryModule } from 'ngx-gallery';
     HeaderComponent,
     UserHeaderComponent,
     DefaultHeaderComponent,
-    AdCreatedComponent
+    AdCreatedComponent,
+    AccountHomeComponent,
+    AccountDetailComponent,
+    AccountAdsComponent,
+    AccountPendingAdsComponent
     
     
     

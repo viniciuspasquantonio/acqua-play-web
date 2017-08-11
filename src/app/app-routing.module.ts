@@ -9,6 +9,10 @@ import { LoginComponent }  from './login/login.component';
 import { RegisterComponent }  from './register/register.component';
 import { CanActivateViaOAuthGuard } from './oauth/can-activate-guard';
 import { AdCreatedComponent }  from './ad/ad-created.component';
+import {AccountHomeComponent} from './account-home/account-home.component';
+import {AccountDetailComponent} from './account-home/detail/account-detail.component';
+import {AccountAdsComponent} from './account-home/ads/account-ads.component';
+import {AccountPendingAdsComponent} from './account-home/pending-ads/account-pending-ads.component';
 
 const routes: Routes = [
   
@@ -28,7 +32,12 @@ const routes: Routes = [
   ]  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'ad-created', component: AdCreatedComponent }
+  { path: 'ad-created', component: AdCreatedComponent },
+  { path: 'account-home', component: AccountHomeComponent, children: [
+    { path:'',component: AccountDetailComponent, outlet: 'account'},
+    { path: 'detail', component: AccountDetailComponent, outlet: 'account' },
+    { path: 'myads', component: AccountAdsComponent, outlet: 'account' },
+    { path: 'pending-ads', component: AccountPendingAdsComponent, outlet: 'account' }] }
   
 ];
 @NgModule({
