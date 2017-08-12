@@ -1,6 +1,5 @@
-import { Component,Input } from '@angular/core';
-import { LoginService }    from '../login/login.service';
-import { User }    from '../user/user.model';
+import { Component } from '@angular/core';
+
 
 @Component({
   moduleId: module.id,
@@ -9,11 +8,6 @@ import { User }    from '../user/user.model';
   templateUrl: './account-home.component.html'
 })
 export class AccountHomeComponent {
-	@Input()
-	user: User;
-	constructor(private loginService :LoginService){}
-	ngOnInit(): void {
-	    this.user = this.loginService.currentUser();
-	}
+	
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers,URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { User } from './user.model';
+import {HttpService} from '../oauth/auth-http.service';
 
 @Injectable()
 export class UserService {
@@ -9,7 +10,7 @@ export class UserService {
   	private baseUrl: string = 'http://localhost:8080/';
   	private authUser = 'my-trusted-client';
   private authPassword = 'secret';
-	constructor(private http: Http) { }
+	constructor(private http: Http,private authHttp: HttpService) { }
 
    
 
@@ -28,11 +29,21 @@ export class UserService {
       
   }
   create(user: User): Promise<User> {
-     return this.http
+       return this.http
       .post(this.userUrl, JSON.stringify(user), {search:this.getSearchParams(),headers: this.getHeaders()})
+
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);     
+  }
+
+
+  update(user: User): Observable<User> {
+      
+     return this.authHttp
+      .put(this.userUrl, JSON.stringify(user), {headers: this.getHeaders()})
+      .map(mapUser)
+      .catch(this.handleError);    
   }
 
   
@@ -44,15 +55,18 @@ export class UserService {
 	    let headers = new Headers();
 	    
 	    headers.append('Content-Type', 'application/json');
-	    headers.append('Authorization', 'Basic ' + btoa(this.authUser + ':' + this.authPassword));
+      headers.append('Authorization', 'Basic ' + btoa(this.authUser + ':' + this.authPassword));
+	    
 	    
 	    return headers;
   }
-  private getSearchParams(){
+
+   private getSearchParams(){
       let params: URLSearchParams = new URLSearchParams();
      params.set('access_token', localStorage.getItem("token")   );
      return params;
   }
+  
   
 
  }
@@ -76,7 +90,6 @@ function toUser(r:any): User{
 
 }
 function mapUser(response:Response): User{
-  // toPerson looks just like in the previous example
   return toUser(response.json());
 }
 

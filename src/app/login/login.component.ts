@@ -39,15 +39,15 @@
 			                        this.userService.findByUsername(loginInfo.username).subscribe(
 				                       response => {
 
-				                        localStorage.setItem('user', JSON.stringify(response));
-				                        
+				                        	this.loginService.updateLoggedUser(response);
+				                        	this.router.navigateByUrl('/home');
+			                        		window.location.reload();
 				                       },
 				                       error => {
 				                        alert(error);
 				                       }
 				                     );
-			                        this.router.navigateByUrl('/home');
-			                        window.location.reload();
+			                        
 		                       },
 		                       error => {
 		                        alert(error);

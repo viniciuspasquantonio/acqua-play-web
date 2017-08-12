@@ -19,9 +19,19 @@ export class AdService {
       
   }
 
+  findBySeller(seller:string): Observable<Ad[]>{
+    let params: URLSearchParams = new URLSearchParams();
+     params.set('seller', seller);
+    return this.authHttp
+      .get(`${this.baseUrl}ads/findBySeller/${seller}`, {search:params,headers: this.getHeaders()})
+      .map(mapAds)
+      .catch(handleErrors);      
+      
+  }
+
   
    getImageSrc(ad:Ad, imageIndex:number): Observable<any> {
-      console.log('ad to img ',ad);
+      
       if(!imageIndex){
         imageIndex = 0;
       }
@@ -35,7 +45,6 @@ export class AdService {
   
 
    extractUrl(res:Response):string {
-    console.log(res.url);
     return res.url;
   }
 
@@ -92,7 +101,6 @@ function toAd(r:any): Ad{
     images: r.images,
     seller: r.seller
   });
-  console.log('Parsed ad:', ad);
   return ad;
 
 }
@@ -106,7 +114,6 @@ function handleErrors (error: any) {
   // log error
   // could be something more sofisticated
   let errorMsg = error.message || `Yikes! There was was a problem with our hyperdrive device and we couldn't retrieve your data!`
-  console.error(errorMsg);
 
   // throw an application level error
   return Observable.throw(errorMsg);
