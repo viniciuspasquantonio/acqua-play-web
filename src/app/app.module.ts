@@ -34,6 +34,8 @@ import {AccountPendingAdsComponent} from './account-home/pending-ads/account-pen
 
 import { NgxGalleryModule } from 'ngx-gallery';
 
+import {AdEditComponent} from './ad/ad-edit.component';
+
 
 
 
@@ -56,7 +58,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
     AccountHomeComponent,
     AccountDetailComponent,
     AccountAdsComponent,
-    AccountPendingAdsComponent
+    AccountPendingAdsComponent,
+    AdEditComponent
     
     
     

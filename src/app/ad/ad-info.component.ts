@@ -31,6 +31,7 @@ export class AdInfoComponent {
       private route: ActivatedRoute,
        private userService: UserService
 
+
     	
   	) {}
 	

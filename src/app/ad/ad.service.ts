@@ -65,8 +65,8 @@ export class AdService {
   }
 
   update(ad: Ad): Observable<Ad> {    
-    return this.http
-      .put(this.adsUrl, JSON.stringify(ad), {search:this.getSearchParams(),headers: this.getHeaders()})
+    return this.authHttp
+      .put(`${this.baseUrl}/ads/${ad.id}`, JSON.stringify(ad), {headers: this.getHeaders()})
       .map(mapAd)
       .catch(handleErrors);  
   }

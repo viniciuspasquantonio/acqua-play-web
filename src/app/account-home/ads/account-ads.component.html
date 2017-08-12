@@ -1,31 +1,14 @@
 <div class="inner-box">
-                        <h2 class="title-2"><i class="icon-docs"></i> My Ads </h2>
+                        <h2 class="title-2"><i class="icon-docs"></i> Meus Anuncios </h2>
 
                         <div class="table-responsive">
-                            <div class="table-action">
-                                <label for="checkAll">
-                                    <input type="checkbox" id="checkAll">
-                                    Select: All | <a href="#" class="btn btn-xs btn-danger">Delete <i
-                                        class="glyphicon glyphicon-remove "></i></a> </label>
-
-                                <div class="table-search pull-right col-xs-7">
-                                    <div class="form-group">
-                                        <label class="col-xs-5 control-label text-right">Search <br>
-                                            <a title="clear filter" class="clear-filter" href="#clear">[clear]</a>
-                                        </label>
-
-                                        <div class="col-xs-7 searchpan">
-                                            <input type="text" class="form-control" id="filter">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <table id="addManageTable"
                                    class="table table-striped table-bordered add-manage-table table demo"
                                    data-filter="#filter" data-filter-text-only="true">
                                 <thead>
                                 <tr>
-                                    <th data-type="numeric" data-sort-initial="true"></th>
+                                    
                                     <th> Imagem</th>
                                     <th data-sort-ignore="true">Titulo</th>
                                     <th data-type="numeric"> Preco</th>
@@ -35,19 +18,14 @@
                                 <tbody>
 
                                 <tr *ngFor="let ad of ads; let i = index;">
-                                    <td style="width:2%" class="add-img-selector">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox">
-                                            </label>
-                                        </div>
-                                    </td>
+                                    
                                     <td style="width:14%" class="add-img-td">
                                     	<img src={{imgs[ad.id]}}>
                                     </td>
                                     <td style="width:58%" class="ads-details-td">
                                         <div>
                                             <p><strong> {{ad.title}}</strong></p>
+                                            <p>{{ad.description}}</p>
 
                                         </div>
                                     </td>
@@ -56,13 +34,13 @@
                                     </td>
                                     <td style="width:10%" class="action-td">
                                         <div>
-                                            <p><a class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i> Alterar </a>
+                                            <p><a class="btn btn-primary btn-xs" [routerLink]="['/account-home', {outlets: {'account': ['edit',ad.id]}}]"> <i class="fa fa-edit"></i> Alterar </a>
                                             </p>
 
                                             <p><a class="btn btn-info btn-xs"> <i class="fa fa-mail-forward"></i> Compartilhar
                                             </a></p>
 
-                                            <p><a class="btn btn-danger btn-xs"> <i class=" fa fa-trash"></i> Remover
+                                            <p><a class="btn btn-danger btn-xs"> <i class=" fa fa-trash"></i> Inativar
                                             </a></p>
                                         </div>
                                     </td>

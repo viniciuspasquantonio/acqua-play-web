@@ -1,0 +1,84 @@
+<div class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 page-content">
+                    <div class="inner-box category-content">
+                        <h2 class="title-2 uppercase"><strong> <i class="icon-docs"></i> Alterar Anuncio</strong></h2>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <form class="form-horizontal" (ngSubmit)="onSubmit()" #adForm="ngForm">
+                                    <fieldset>
+                                        
+
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="title">Título Anuncio</label>
+
+                                            <div class="col-md-8">
+                                                <input [(ngModel)]="ad.title" id="title" name="title" 
+                                                       class="form-control input-md" required type="text">
+                                               
+                                            </div>
+                                        </div>
+
+                                        <!-- Textarea -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="description">Descreva o anuncio </label>
+
+                                            <div class="col-md-8">
+                                                <textarea class="form-control" [(ngModel)]="ad.description" id="description" name="description"  required></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Prepended text-->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="price">Preço</label>
+
+                                            <div class="col-md-4">
+                                                <div class="input-group"><span class="input-group-addon">$</span>
+                                                    <input [(ngModel)]="ad.price" id="price" name="price" class="form-control"
+                                                            required type="text">
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+
+                                        <!-- photo -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" for="textarea">  </label>
+
+                                            <div class="col-md-8">
+                                               
+
+                                                <image-upload 
+                                                    [url]="uploadUrl"
+                                                    [max]="5"
+                                                    [buttonCaption]="'Adicione fotos'"
+                                                    [dropBoxMessage]="'Adicione até 5 fotos. Use imagens reais, não de catálogo.'"
+                                                    (onFileUploadFinish)="imageUploaded($event)"></image-upload>
+
+                                                <p class="help-block">Adicione até 5 fotos. Use imagens reais, não de catálogo.</p>
+                                            </div>
+                                        </div>
+                                        
+
+                                        <!-- Button  -->
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label"></label>
+
+                                            <div class="col-md-8"><button type="button" id="saveAdButton" [disabled]="!adForm.form.valid" (click)="save(ad);" class="btn btn-success btn-lg">Salvar</button></div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.main-container -->
