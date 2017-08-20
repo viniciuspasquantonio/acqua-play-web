@@ -14,6 +14,8 @@ import {AccountDetailComponent} from './account-home/detail/account-detail.compo
 import {AccountAdsComponent} from './account-home/ads/account-ads.component';
 import {AccountPendingAdsComponent} from './account-home/pending-ads/account-pending-ads.component';
 import { AdEditComponent }  from './ad/ad-edit.component';
+import { AdChatComponent }  from './chat/ad-chat.component';
+
 
 const routes: Routes = [
   
@@ -31,7 +33,10 @@ const routes: Routes = [
     
     CanActivateViaOAuthGuard
   ]  },
- 
+  { path: 'ads/chat/:id', component: AdChatComponent, canActivate: [
+    
+    CanActivateViaOAuthGuard
+  ]  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'ad-created', component: AdCreatedComponent },

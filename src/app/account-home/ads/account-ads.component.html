@@ -1,6 +1,7 @@
 <div class="inner-box">
                         <h2 class="title-2"><i class="icon-docs"></i> Meus Anuncios </h2>
-
+                  
+						
                         <div class="table-responsive">
                             
                             <table id="addManageTable"
@@ -20,7 +21,7 @@
                                 <tr *ngFor="let ad of ads; let i = index;">
                                     
                                     <td style="width:14%" class="add-img-td">
-                                    	<img src={{imgs[ad.id]}}>
+                                    	<img class="img-responsive" src={{imgs[ad.id]}}>
                                     </td>
                                     <td style="width:58%" class="ads-details-td">
                                         <div>

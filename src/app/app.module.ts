@@ -19,6 +19,7 @@ import { UserHeaderComponent } from './header/user/user-header.component';
 import { DefaultHeaderComponent } from './header/default/default-header.component';
 import {UserService} from './user/user.service';
 import {HttpService} from './oauth/auth-http.service';
+import {ChatService} from './chat/chat.service';
 
 
 import {AdListComponent} from './ad/ad-list.component';
@@ -35,6 +36,7 @@ import {AccountPendingAdsComponent} from './account-home/pending-ads/account-pen
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import {AdEditComponent} from './ad/ad-edit.component';
+import {AdChatComponent} from './chat/ad-chat.component';
 
 
 
@@ -59,7 +61,8 @@ import {AdEditComponent} from './ad/ad-edit.component';
     AccountDetailComponent,
     AccountAdsComponent,
     AccountPendingAdsComponent,
-    AdEditComponent
+    AdEditComponent,
+    AdChatComponent
     
     
     
@@ -81,7 +84,8 @@ import {AdEditComponent} from './ad/ad-edit.component';
                 CanActivateViaOAuthGuard,
                 LoginService,
                 UserService,
-                HttpService
+                HttpService,
+                ChatService
                                 
               ],
   bootstrap: [AppComponent]

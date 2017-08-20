@@ -13,78 +13,55 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9 page-content col-thin-right">
-                    <div class="inner inner-box ads-details-wrapper">
-                        <h2> {{ad.title}}
-                            
-                        </h2>
-                        <span class="info-row"> <span class="date"><i class=" icon-clock"> </i> Today 1:21 pm </span> - <span
-                                class="category">Electronics </span>- <span class="item-location"><i
-                                class="fa fa-map-marker"></i> New York </span> </span>
-
-                        <div class="ads-image">
-                            <h1 class="pricetag"> ${{ad.price}}</h1>
-
-                            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                    <div class="panel sidebar-panel panel-contact-seller">
+                        <div class="panel-heading">Mensagens</div>
+                        <div class="panel-content user-info">
+                            <div class="panel-body text-center">
+                                <ul id="messages" class="message">
+                                    <li *ngFor="let chat of chats; let i = index">
+                                     
+                                        
+                                            <span>{{chat.message}}</span>
+                                            <span>{{chat.username}}</span>
+                                        
+                                    </li> 
+                                </ul>  
+                            </div>
                         </div>
-                        <!--ads-image-->
-
-
-
-                        <div class="Ads-Details">
-                            <h5 class="list-title"><strong>Ads Detsils</strong></h5>
-
+                        <div class="panel-footer">
                             <div class="row">
-                                <div class="ads-details-info col-md-8">
-                                    {{ad.description}}
-                                </div>
-                                <div class="col-md-4">
-                                    <aside class="panel panel-body panel-details">
-                                        <ul>
-                                            <li>
-                                                <p class=" no-margin "><strong>Price:</strong> $ 2,45</p>
-                                            </li>
-                                            <li>
-                                                <p class="no-margin"><strong>Type:</strong> Mobile Mobiles,For sale</p>
-                                            </li>
-                                            <li>
-                                                <p class="no-margin"><strong>Location:</strong> New York </p>
-                                            </li>
-                                            <li>
-                                                <p class=" no-margin "><strong>Condition:</strong> New</p>
-                                            </li>
-                                            <li>
-                                                <p class="no-margin"><strong>Brand:</strong> Sony</p>
-                                            </li>
-                                        </ul>
-                                    </aside>
-                                    <div class="ads-action">
-                                        <ul class="list-border">
-                                            <li><a href="#"> <i class=" fa fa-user"></i> More ads by User </a></li>
-                                            <li><a href="#"> <i class=" fa fa-heart"></i> Save ad </a></li>
-                                            <li><a href="#"> <i class="fa fa-share-alt"></i> Share ad </a></li>
-                                            <li><a href="#reportAdvertiser" data-toggle="modal"> <i
-                                                    class="fa icon-info-circled-alt"></i> Report abuse </a></li>
-                                        </ul>
-                                    </div>
+                                <div class="col-lg-12">
+                                    <form class="form-horizontal" (ngSubmit)="onSubmit()" #adChatForm="ngForm">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Digite sua mensagem" [(ngModel)]="chat.message" name="message" id="ad-chat-message" autofocus required />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-secondary" type="button" [disabled]="!adChatForm.form.valid" (click)="send(chat);">Enviar</button>
+                                            </span>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="content-footer text-left"><a class="btn  btn-default" data-toggle="modal"
-                                                                     href="#contactAdvertiser"><i
-                                    class=" icon-mail-2"></i> Send a message </a> <a class="btn  btn-info"><i
-                                    class=" icon-phone-1"></i> 01680 531 352 </a></div>
-                        </div>
+                                
+                            
+                        </div> 
+                            
+                        
                     </div>
-                    <!--/.ads-details-wrapper-->
-
                 </div>
+                        
                 <!--/.page-content-->
 
                 <div class="col-sm-3  page-sidebar-right">
                     <aside>
                         <div class="panel sidebar-panel panel-contact-seller">
-                            <div class="panel-heading">Informacoes do Anunciante</div>
+                            <div class="panel-heading">Informacoes do Anuncio</div>
                             <div class="panel-content user-info">
                                 <div class="panel-body text-center">
+                                    <div class="seller-info">
+                                        <h3 class="no-margin"> {{ad.title}}</h3>
+                                        <h1 class="pricetag"> ${{ad.price}}</h1>
+                                        <img class="img-responsive" src="{{imgUrl}}">
+                                    </div>
                                     <div class="seller-info">
                                         <h3 class="no-margin"> {{seller.firstName}} {{seller.lastName}}</h3>
 
@@ -92,12 +69,8 @@
 
                                         
                                     </div>
-                                    <div class="user-ads-action"><a [routerLink]="['/ads/chat', ad.id]" data-toggle="modal"
-                                                                    class="btn   btn-default btn-block"><i
-                                            class=" icon-mail-2"></i> Entre em contato </a> <a
-                                            class="btn  btn-info btn-block"><i class=" icon-phone-1"></i> {{seller.phone}}
-                                    </a></div>
                                 </div>
+
                             </div>
                         </div>
                         
