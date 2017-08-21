@@ -14,16 +14,19 @@
             <div class="row">
                 <div class="col-sm-9 page-content col-thin-right">
                     <div class="panel sidebar-panel panel-contact-seller">
-                        <div class="panel-heading">Mensagens</div>
+                        <div class="panel-heading">Conversas</div>
                         <div class="panel-content user-info">
                             <div class="panel-body text-center">
                                 <ul id="messages" class="message">
-                                    <li *ngFor="let chat of chats; let i = index">
+                                    <li *ngFor="let message of messages; let i = index;let last = last">
                                      
+                                        <div [ngClass]="{'text-right':isLoggedUserMessage(message),'text-left':isLoggedUserMessage(message)==false}">
+                                            <b><span *ngIf="isLoggedUserMessage(message)==false">{{message.username}}: </span></b>
+                                            <span>{{message.text}}</span>
+                                            
+                                        </div>
                                         
-                                            <span>{{chat.message}}</span>
-                                            <span>{{chat.username}}</span>
-                                        
+
                                     </li> 
                                 </ul>  
                             </div>
@@ -33,9 +36,9 @@
                                 <div class="col-lg-12">
                                     <form class="form-horizontal" (ngSubmit)="onSubmit()" #adChatForm="ngForm">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Digite sua mensagem" [(ngModel)]="chat.message" name="message" id="ad-chat-message" autofocus required />
+                                            <input type="text" class="form-control" placeholder="Digite sua mensagem" [(ngModel)]="message.text" name="message" id="ad-chat-message"  autofocus required />
                                             <span class="input-group-btn">
-                                                <button class="btn btn-secondary" type="button" [disabled]="!adChatForm.form.valid" (click)="send(chat);">Enviar</button>
+                                                <button class="btn btn-secondary" type="button" [disabled]="!adChatForm.form.valid" (click)="send(message);">Enviar</button>
                                             </span>
                                         </div>
                                     </form>

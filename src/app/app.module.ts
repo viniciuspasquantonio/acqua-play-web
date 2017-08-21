@@ -37,6 +37,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
 
 import {AdEditComponent} from './ad/ad-edit.component';
 import {AdChatComponent} from './chat/ad-chat.component';
+import {ChatComponent} from './chat/chat.component';
+
 
 
 
@@ -62,7 +64,8 @@ import {AdChatComponent} from './chat/ad-chat.component';
     AccountAdsComponent,
     AccountPendingAdsComponent,
     AdEditComponent,
-    AdChatComponent
+    AdChatComponent,
+    ChatComponent
     
     
     

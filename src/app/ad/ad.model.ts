@@ -11,4 +11,5 @@ export class Ad {
     services : Service[];
     images : string[];
     seller: string;
+    defaultImage: string;
 }
