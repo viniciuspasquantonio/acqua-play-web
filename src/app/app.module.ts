@@ -20,6 +20,8 @@ import { DefaultHeaderComponent } from './header/default/default-header.componen
 import {UserService} from './user/user.service';
 import {HttpService} from './oauth/auth-http.service';
 import {ChatService} from './chat/chat.service';
+import {CategoryService} from './category/category.service';
+
 
 
 import {AdListComponent} from './ad/ad-list.component';
@@ -38,6 +40,9 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import {AdEditComponent} from './ad/ad-edit.component';
 import {AdChatComponent} from './chat/ad-chat.component';
 import {ChatComponent} from './chat/chat.component';
+import {AdGridComponent} from './ad/ad-grid.component';
+import {AdLsComponent} from './ad/ad-ls.component';
+
 
 
 
@@ -65,7 +70,10 @@ import {ChatComponent} from './chat/chat.component';
     AccountPendingAdsComponent,
     AdEditComponent,
     AdChatComponent,
-    ChatComponent
+    ChatComponent,
+    AdGridComponent,
+    AdLsComponent
+
     
     
     
@@ -88,7 +96,8 @@ import {ChatComponent} from './chat/chat.component';
                 LoginService,
                 UserService,
                 HttpService,
-                ChatService
+                ChatService,
+                CategoryService
                                 
               ],
   bootstrap: [AppComponent]

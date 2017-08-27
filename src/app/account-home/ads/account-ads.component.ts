@@ -36,7 +36,7 @@ export class AccountAdsComponent {
 	  ngOnInit(): void {
 	  	this.user = this.loginService.currentUser();
 	    // this.adService.findBySeller(this.user.username).subscribe(
-	    this.adService.findBySeller(this.user.username).subscribe(
+	    this.adService.findBySeller(this.user.id).subscribe(
 	         /* happy path */ a => {
 	                                    this.ads = a;
 	                                    for (let ad of a) {

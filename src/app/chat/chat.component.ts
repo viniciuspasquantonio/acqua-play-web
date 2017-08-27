@@ -74,7 +74,7 @@ export class ChatComponent {
     this.message.sellerId = messages[0].sellerId;
     this.message.adId = messages[0].adId;
      
-    this.message.username = this.currentUser.username;
+    this.message.userId = this.currentUser.id;
     this.chatService.save(this.message).subscribe(
          /* happy path */ a => {messages.push(a);this.message.text = '';},
          /* error path */ e => {
@@ -95,7 +95,7 @@ export class ChatComponent {
   }
 
   isLoggedUserMessage(message:Message):boolean{
-    return (this.currentUser.username == message.username);
+    return (this.currentUser.id == message.userId);
   }
 
   

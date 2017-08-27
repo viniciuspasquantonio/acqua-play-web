@@ -7,6 +7,9 @@ import { LoginService }    from '../login/login.service';
 import { Ad }    from './ad.model';
 import { AdService }    from './ad.service';
 
+import { Category }    from '../category/category.model';
+import { CategoryService }    from '../category/category.service';
+
 import 'rxjs/add/operator/switchMap';
 
 
@@ -21,7 +24,8 @@ export class AdDetailComponent {
 	constructor(
     	private adService: AdService,
       	private router: Router,
-        private loginService: LoginService
+        private loginService: LoginService,
+        private categoryService: CategoryService
     	//private route: ActivatedRoute,
     	//private location: Location
   	) {}
@@ -30,6 +34,11 @@ export class AdDetailComponent {
 
 	@Input()
 	ad: Ad;
+
+  @Input()
+  selectedCategory: Category;
+
+  categories: Category[] = [];
 	
 	@Input()
   	uploadUrl: string;
@@ -40,7 +49,8 @@ export class AdDetailComponent {
 	ngOnInit(): void {
     	this.newAd();
     	this.uploadUrl = 'http://localhost:8080/upload/?access_token='+localStorage.getItem("token");
-    	
+    	this.categoryService.getAll().subscribe(
+                          a => {this.categories = a;});
     	
   	}
 
@@ -50,7 +60,9 @@ export class AdDetailComponent {
     	this.ad.images = [];	    
 	}
 	save(): void {
-    this.ad.seller = this.loginService.currentUser().username;
+    this.ad.sellerId = this.loginService.currentUser().id;
+    console.log('selectedCategory');
+    this.ad.categoryId = this.selectedCategory.id;
 		if(this.ad.id){
 			this.adService.update(this.ad);
 		}else{

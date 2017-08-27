@@ -51,7 +51,7 @@
                      		<span class="chat-img1" [ngClass]="{'pull-right':isLoggedUserMessage(message),'pull-left':isLoggedUserMessage(message)==false}">
                      			<img src="images/avatar_padrao.png" alt="User Avatar" class="img-circle">
                      		</span>
-                     		<div class="chat-body1 clearfix" [ngClass]="{'pull-right':isLoggedUserMessage(message),'pull-left':isLoggedUserMessage(message)==false}">
+                     		<div class="clearfix" [ngClass]="{'chat-body2 text-right':isLoggedUserMessage(message),'chat-body1 text-left':isLoggedUserMessage(message)==false}">
                         		<p>{{message.text}}</p>
 								<div class="chat_time">{{message.timeSent}}</div>
                      		</div>

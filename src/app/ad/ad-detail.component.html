@@ -10,7 +10,18 @@
                                 <form class="form-horizontal" (ngSubmit)="onSubmit()" #adForm="ngForm">
                                     <fieldset>
                                         
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label">Categoria</label>
 
+                                            <div class="col-md-8">
+                                                <select name="categoryId" id="category-group" class="form-control" [(ngModel)]="selectedCategory" required>
+                                                    <option value="0" selected="selected"> Selecione uma categoria...</option>
+                                                    <option *ngFor="let c of categories" [ngValue]="c"> {{c.name}}
+                                                    </option>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="title">Título Anuncio</label>

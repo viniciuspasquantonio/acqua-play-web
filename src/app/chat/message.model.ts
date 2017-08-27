@@ -7,7 +7,6 @@ export class Message {
     adId: number;
     text: string;
     timeSent: string;
-    username:string;
     chatKey:string;
     
 }

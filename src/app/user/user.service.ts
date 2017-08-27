@@ -21,9 +21,17 @@ export class UserService {
       .catch(handleErrors);
       
   }
- findByUsername(username: string): Observable<User> {
+ findByEmail(email: string): Observable<User> {
     return this.http
-      .get(`${this.baseUrl}/user/findByUsername/${username}`, {search:this.getSearchParams(),headers: this.getHeaders()})
+      .get(`${this.baseUrl}/user/findByEmail/${email}`, {search:this.getSearchParams(),headers: this.getHeaders()})
+      .map(mapUser)
+      .catch(handleErrors);
+      
+  }
+
+  findByUserId(id: number): Observable<User> {
+    return this.http
+      .get(`${this.baseUrl}/user/findByuserId/${id}`, {search:this.getSearchParams(),headers: this.getHeaders()})
       .map(mapUser)
       .catch(handleErrors);
       
@@ -82,14 +90,15 @@ function toUser(r:any): User{
     lastName: r.lastName,
     phone: r.phone,
     tower: r.tower,
-    apartment: r.apartment,
-    username: r.username
+    apartment: r.apartment
+    
   });
   console.log('Parsed user:', user);
   return user;
 
 }
 function mapUser(response:Response): User{
+
   return toUser(response.json());
 }
 

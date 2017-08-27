@@ -52,7 +52,7 @@ export class AdChatComponent {
       .subscribe(a => {
                         this.ad = a;
                         this.extractImageSrc(a);
-                        this.userService.findByUsername(a.seller).subscribe(user => {this.seller = user;this.message.sellerId = this.seller.id;});
+                        this.userService.findByUserId(a.sellerId).subscribe(user => {this.seller = user;this.message.sellerId = this.seller.id;});
                         this.message.adId = a.id;
 
                         this.chatService.findUserAdChat(a.id,this.currentUser.id).subscribe(
@@ -70,7 +70,6 @@ export class AdChatComponent {
 
   send(): void {
     this.message.userId = this.currentUser.id;
-    this.message.username = this.currentUser.username;
     this.chatService.save(this.message).subscribe(
          /* happy path */ a => {this.messages.push(a);this.message.text = '';},
          /* error path */ e => {
@@ -91,7 +90,7 @@ export class AdChatComponent {
   }
 
   isLoggedUserMessage(message:Message):boolean{
-    return (this.currentUser.username == message.username);
+    return (this.currentUser.id == message.userId);
   }
 
   

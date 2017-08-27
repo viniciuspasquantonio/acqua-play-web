@@ -1,58 +1,110 @@
-<div id="wrapper">
-    <div class="main-container">
+
+<!-- Off-Canvas Wrapper-->
+    <div class="offcanvas-wrapper">
+      <!-- Page Title-->
+      <div class="page-title">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-6 login-box">
-                    <div class="panel panel-default">
-
-                        <div class="panel-body">
-                            <form role="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
-                                <div class="form-group">
-                                    <label for="sender-email" class="control-label">Usuário:</label>
-
-                                    <div class="input-icon"><i class="icon-user fa"></i>
-                                        <input id="sender-email" type="text" placeholder="Username"
-                                               class="form-control " [(ngModel)]="login.username" name="username">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="user-pass" class="control-label">Senha:</label>
-
-                                    <div class="input-icon"><i class="icon-lock fa"></i>
-                                        <input type="password" class="form-control" placeholder="Password"
-                                               id="user-pass" [(ngModel)]="login.password" name="password">
-                                    </div>
-                                </div>
-                                <!-- Button  -->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label"></label>
-
-                                    <div class="col-md-8"><button type="button" id="loginButton" [disabled]="!loginForm.form.valid" (click)="login(login);" class="btn btn-success btn-lg">Login</button></div>
-                                </div>
-                                <div class="form-group">
-                                    <a href="/login/facebook" class="btn btn-primary  btn-block">Login with Facebook</a>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="panel-footer">
-
-                            <div class="checkbox pull-left">
-                                <label> <input type="checkbox" value="1" name="remember" id="remember"> Mantenha-me logado</label>
-                            </div>
-
-
-                            <p class="text-center pull-right"><a href="forgot-password.html"> Esqueceu a senha? </a>
-                            </p>
-
-                            <div style=" clear:both"></div>
-                        </div>
-                    </div>
-                    <div class="login-box-btm text-center">
-                        <p> Não possue conta? Registre-se <br>
-                            <a routerLink="/register"><strong>Crie sua conta !</strong> </a></p>
-                    </div>
-                </div>
-            </div>
+          <div class="column">
+            <h1>Login / Register Account</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs">
+              <li><a href="index.html">Home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li><a href="account-orders.html">Account</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>Login / Register</li>
+            </ul>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+<!-- Page Content-->
+      <div class="container padding-bottom-3x mb-2">
+        <div class="row">
+          <div class="col-md-6">
+            <form class="login-box" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+              <div class="row margin-bottom-1x">
+                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block facebook-btn" href="#"><i class="socicon-facebook"></i>&nbsp;Facebook login</a></div>
+                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block twitter-btn" href="#"><i class="socicon-twitter"></i>&nbsp;Twitter login</a></div>
+                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block google-btn" href="#"><i class="socicon-googleplus"></i>&nbsp;Google+ login</a></div>
+              </div>
+              <h4 class="margin-bottom-1x">Or using form below</h4>
+              <div class="form-group input-group">
+                <input class="form-control" type="email" placeholder="Email" [(ngModel)]="login.email" name="email"required><span class="input-group-addon"><i class="icon-mail"></i></span>
+              </div>
+              <div class="form-group input-group">
+                <input class="form-control" type="password" placeholder="Password" [(ngModel)]="login.password"  name="password" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+              </div>
+              <div class="d-flex flex-wrap justify-content-between padding-bottom-1x">
+                <label class="custom-control custom-checkbox">
+                  <input class="custom-control-input" type="checkbox" checked><span class="custom-control-indicator"></span><span class="custom-control-description">Remember me</span>
+                </label><a class="navi-link" href="#">Forgot password?</a>
+              </div>
+              <div class="text-center text-sm-right">
+                <button class="btn btn-primary margin-bottom-none" type="button" [disabled]="!loginForm.form.valid" (click)="login(login);">Login</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <div class="padding-top-3x hidden-md-up"></div>
+            <h3 class="margin-bottom-1x">No Account? Register</h3>
+            <p>Registration takes less than a minute but gives you full control over your orders.</p>
+            <form class="row"  (ngSubmit)="onSubmit()" #registerForm="ngForm">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-fn">First Name</label>
+                  <input class="form-control" type="text" id="reg-fn" [(ngModel)]="user.firstName" name="firstName" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-ln">Last Name</label>
+                  <input class="form-control" type="text" id="reg-ln" [(ngModel)]="user.lastName" name="lastName" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-email">E-mail Address</label>
+                  <input class="form-control" type="email" id="reg-email" [(ngModel)]="user.email"  name="email" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-phone">Phone Number</label>
+                  <input class="form-control" type="text" id="reg-phone" [(ngModel)]="user.phone" name="phone" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-pass">Apartamento</label>
+                  <input class="form-control" type="text" id="reg-pass" [(ngModel)]="user.apartment" name="apartment" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-pass-confirm">Torre</label>
+                  <input class="form-control" type="text" id="reg-pass-confirm" [(ngModel)]="user.tower" name="tower" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-pass">Password</label>
+                  <input class="form-control" type="password" id="reg-pass" [(ngModel)]="user.password" name="password" required>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-pass-confirm">Confirm Password</label>
+                  <input class="form-control" type="password" id="reg-pass-confirm" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                </div>
+              </div>
+              
+              <div class="col-12 text-center text-sm-right">
+                <button class="btn btn-primary margin-bottom-none" type="button" [disabled]="!registerForm.form.valid" (click)="save(user);" >Register</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

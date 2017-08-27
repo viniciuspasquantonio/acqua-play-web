@@ -10,6 +10,8 @@ export class Ad {
     products : Product[];
     services : Service[];
     images : string[];
-    seller: string;
+    sellerId: number;
     defaultImage: string;
+    categoryId: number;
+    keyWords: string;
 }

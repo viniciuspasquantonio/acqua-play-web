@@ -65,7 +65,7 @@ export class AdInfoComponent {
       .switchMap(params => this.adService.get(+params['id']))
       .subscribe(a => {
                         this.ad = a;
-                        this.userService.findByUsername(a.seller).subscribe(user => {this.seller = user});
+                        this.userService.findByUserId(a.sellerId).subscribe(user => {this.seller = user});
                         for (var i = 0; i < a.images.length; i++) {
                           
                           this.adService.getImageSrc(a,i).subscribe(a => {

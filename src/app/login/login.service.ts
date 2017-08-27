@@ -17,9 +17,8 @@ export class LoginService {
   constructor(public http: Http) {}
 
   login(login:Login) : Observable<OauthTokenResponse> {
-    
     let params: URLSearchParams = new URLSearchParams();
-     params.set('username', login.username );
+     params.set('username', login.email );
      params.set('password', login.password );
      params.set('grant_type', 'password' );
 

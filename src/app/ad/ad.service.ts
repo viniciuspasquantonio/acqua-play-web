@@ -19,9 +19,9 @@ export class AdService {
       
   }
 
-  findBySeller(seller:string): Observable<Ad[]>{
+  findBySeller(seller:number): Observable<Ad[]>{
     let params: URLSearchParams = new URLSearchParams();
-     params.set('seller', seller);
+     params.set('seller', ''+seller);
     return this.authHttp
       .get(`${this.baseUrl}ads/findBySeller/${seller}`, {search:params,headers: this.getHeaders()})
       .map(mapAds)
@@ -99,7 +99,7 @@ function toAd(r:any): Ad{
     description: r.description,
     price: r.price,
     images: r.images,
-    seller: r.seller
+    sellerId: r.sellerId
   });
   return ad;
 
