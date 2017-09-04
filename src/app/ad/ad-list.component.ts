@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router }            from '@angular/router';
+import { Router,ActivatedRoute }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 // Observable class extensions
@@ -14,6 +14,7 @@ import {HttpService} from '../oauth/auth-http.service';
 
 import { Category }    from '../category/category.model';
 import { CategoryService }    from '../category/category.service';
+
 
 
 @Component({
@@ -38,24 +39,31 @@ export class AdListComponent implements OnInit {
   @Input()
   searchText: string = null;
 
+page:number = 0;
+size:number = 20;
   constructor(
     private adService: AdService,
-    private router: Router,
+    private route: ActivatedRoute,
     private categoryService: CategoryService) {}
   
   ngOnInit(): void {
     this.categoryService.getAll().subscribe(
                           a => {this.categories = a;});
-    this.adService.getAll().subscribe(
-         /* happy path */ a => {
-                                    this.ads = a;
-                                    for (let ad of a) {
-                                        this.extractImageSrc(ad);
-                                    }
+    
+      this.route.params
+      .switchMap(params => this.adService.search(params['search'],this.page,this.size))
+      .subscribe(a => {
+                        this.ads = a.content;
+                        for (let ad of a.content) {
+                            this.extractImageSrc(ad);
+                        }
                                    
-                                },
-         /* error path */ e => {
-           this.errorMessage = e;});
+                      },
+                    e => {
+                        this.errorMessage = e;
+                      }
+                  );    
+    
   }
 
   private extractImageSrc(ad:Ad)  {

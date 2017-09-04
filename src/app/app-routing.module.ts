@@ -22,10 +22,11 @@ const routes: Routes = [
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home',  component: HomeComponent },
-  { path: 'ads',  component: AdListComponent, canActivate: [
+  { path: 'ads/:search',  component: AdListComponent, canActivate: [
     
     CanActivateViaOAuthGuard
   ]   },
+  
   { path: 'ads/new',  component: AdDetailComponent, canActivate: [
     
     CanActivateViaOAuthGuard

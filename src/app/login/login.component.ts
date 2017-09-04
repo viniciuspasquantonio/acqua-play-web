@@ -66,6 +66,7 @@
     		this.user = new User();	    
 		}
 		save(): void {
+			this.user.username = this.user.email;
 			if(this.user.password != this.confirmPassword){
 				alert("Confirmacao da senha deve ser igual a senha ");
 				return;

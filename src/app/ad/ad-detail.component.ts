@@ -61,8 +61,8 @@ export class AdDetailComponent {
 	}
 	save(): void {
     this.ad.sellerId = this.loginService.currentUser().id;
-    console.log('selectedCategory');
     this.ad.categoryId = this.selectedCategory.id;
+    this.ad.category = this.selectedCategory.name;
 		if(this.ad.id){
 			this.adService.update(this.ad);
 		}else{

@@ -17,15 +17,15 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   moduleId: module.id,
   selector: 'ad-info', 
-  styleUrls: ['../app.component.css'], 
+  styleUrls: ['../../css/carousel.css','../../css/gallery.css','../../css/list-group.css','../../css/shop.css'], 
   templateUrl: './ad-info.component.html'
 })
 export class AdInfoComponent { 
 	ad:Ad = new Ad();
   seller:User = new User();
   imgsUrl:string[] = [];
-  galleryOptions: NgxGalleryOptions[];
-  galleryImages: NgxGalleryImage[] = [];
+
+ selectedImg:number = 0;
   constructor(
     	private adService: AdService,      
       private route: ActivatedRoute,
@@ -37,60 +37,26 @@ export class AdInfoComponent {
 	
 	
 	ngOnInit(): void {
-      this.galleryOptions = [
-            {
-                width: '600px',
-                height: '400px',
-                thumbnailsColumns: 4,
-                imageAnimation: NgxGalleryAnimation.Slide
-            },
-            // max-width 800
-            {
-                breakpoint: 800,
-                width: '100%',
-                height: '600px',
-                imagePercent: 80,
-                thumbnailsPercent: 20,
-                thumbnailsMargin: 20,
-                thumbnailMargin: 20
-            },
-            // max-width 400
-            {
-                breakpoint: 400,
-                preview: false
-            }
-        ];
+      
       this.route.params
-      // (+) converts string 'id' to a number
-      .switchMap(params => this.adService.get(+params['id']))
+      .switchMap(params => this.adService.get(params['id']))
       .subscribe(a => {
                         this.ad = a;
-                        this.userService.findByUserId(a.sellerId).subscribe(user => {this.seller = user});
-                        for (var i = 0; i < a.images.length; i++) {
-                          
-                          this.adService.getImageSrc(a,i).subscribe(a => {
+                        //this.userService.findByUserId(a.sellerId).subscribe(user => {this.seller = user});
+                        a.images.forEach((img, index) => {
+                            this.adService.getImageSrc(a,index).subscribe(imgSrc => {
                             
-                            this.galleryImages.push({
-                              small:a,
-                              medium:a,
-                              big:a
-                            });
+                              this.imgsUrl[index] = imgSrc;
                           
-                          });
-                        }
-                        
-                      });
+                            });
+                        });
+                                   
+                      },
+                    e => {
+                        console.log(e);
+                      }
+                  );  
 
-
-
-      
   }
-
-  
-	
-	
-  
-
-
 }
 

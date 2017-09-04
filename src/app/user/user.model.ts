@@ -6,7 +6,7 @@ export class User {
     phone: string;
     tower: string;
     apartment: number;
-    
+    username: string;
     id: number;
     
 }

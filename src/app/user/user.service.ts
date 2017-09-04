@@ -31,7 +31,7 @@ export class UserService {
 
   findByUserId(id: number): Observable<User> {
     return this.http
-      .get(`${this.baseUrl}/user/findByuserId/${id}`, {search:this.getSearchParams(),headers: this.getHeaders()})
+      .get(`${this.baseUrl}/user/findByUserId/${id}`, {search:this.getSearchParams(),headers: this.getHeaders()})
       .map(mapUser)
       .catch(handleErrors);
       

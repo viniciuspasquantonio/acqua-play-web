@@ -1,229 +1,329 @@
-
-<div class="main-container">
+<!-- Page Title-->
+      <div class="page-title">
         <div class="container">
-            <ol class="breadcrumb pull-left">
-                <li><a href="#"><i class="icon-home fa"></i></a></li>
-                <li><a href="category.html">All Ads</a></li>
-                <li><a href="sub-category-sub-location.html">Electronics</a></li>
-                <li class="active">Mobile Phones</li>
-            </ol>
-            <div class="pull-right backtolist"><a href="sub-category-sub-location.html"> <i
-                    class="fa fa-angle-double-left"></i> Back to Results</a></div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9 page-content col-thin-right">
-                    <div class="inner inner-box ads-details-wrapper">
-                        <h2> {{ad.title}}
-                            
-                        </h2>
-                        <span class="info-row"> <span class="date"><i class=" icon-clock"> </i> Today 1:21 pm </span> - <span
-                                class="category">Electronics </span>- <span class="item-location"><i
-                                class="fa fa-map-marker"></i> New York </span> </span>
-
-                        <div class="ads-image">
-                            <h1 class="pricetag"> ${{ad.price}}</h1>
-
-                            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
-                        </div>
-                        <!--ads-image-->
-
-
-
-                        <div class="Ads-Details">
-                            <h5 class="list-title"><strong>Ads Detsils</strong></h5>
-
-                            <div class="row">
-                                <div class="ads-details-info col-md-8">
-                                    {{ad.description}}
-                                </div>
-                                <div class="col-md-4">
-                                    <aside class="panel panel-body panel-details">
-                                        <ul>
-                                            <li>
-                                                <p class=" no-margin "><strong>Price:</strong> $ 2,45</p>
-                                            </li>
-                                            <li>
-                                                <p class="no-margin"><strong>Type:</strong> Mobile Mobiles,For sale</p>
-                                            </li>
-                                            <li>
-                                                <p class="no-margin"><strong>Location:</strong> New York </p>
-                                            </li>
-                                            <li>
-                                                <p class=" no-margin "><strong>Condition:</strong> New</p>
-                                            </li>
-                                            <li>
-                                                <p class="no-margin"><strong>Brand:</strong> Sony</p>
-                                            </li>
-                                        </ul>
-                                    </aside>
-                                    <div class="ads-action">
-                                        <ul class="list-border">
-                                            <li><a href="#"> <i class=" fa fa-user"></i> More ads by User </a></li>
-                                            <li><a href="#"> <i class=" fa fa-heart"></i> Save ad </a></li>
-                                            <li><a href="#"> <i class="fa fa-share-alt"></i> Share ad </a></li>
-                                            <li><a href="#reportAdvertiser" data-toggle="modal"> <i
-                                                    class="fa icon-info-circled-alt"></i> Report abuse </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="content-footer text-left"><a class="btn  btn-default" data-toggle="modal"
-                                                                     href="#contactAdvertiser"><i
-                                    class=" icon-mail-2"></i> Send a message </a> <a class="btn  btn-info"><i
-                                    class=" icon-phone-1"></i> 01680 531 352 </a></div>
-                        </div>
-                    </div>
-                    <!--/.ads-details-wrapper-->
-
-                </div>
-                <!--/.page-content-->
-
-                <div class="col-sm-3  page-sidebar-right">
-                    <aside>
-                        <div class="panel sidebar-panel panel-contact-seller">
-                            <div class="panel-heading">Informacoes do Anunciante</div>
-                            <div class="panel-content user-info">
-                                <div class="panel-body text-center">
-                                    <div class="seller-info">
-                                        <h3 class="no-margin"> {{seller.firstName}} {{seller.lastName}}</h3>
-
-                                        <p>Apartamento: <strong>{{seller.apartment}} - {{seller.tower}}</strong></p>
-
-                                        
-                                    </div>
-                                    <div class="user-ads-action"><a [routerLink]="['/ads/chat', ad.id]" data-toggle="modal"
-                                                                    class="btn   btn-default btn-block"><i
-                                            class=" icon-mail-2"></i> Entre em contato </a> <a
-                                            class="btn  btn-info btn-block"><i class=" icon-phone-1"></i> {{seller.phone}}
-                                    </a></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!--/.categories-list-->
-                    </aside>
-                </div>
-                <!--/.page-side-bar-->
-            </div>
-        </div>
-    </div>
-    <!-- /.main-container -->
-
-    <div class="footer" id="footer">
-        <div class="container">
-            <ul class=" pull-left navbar-link footer-nav">
-                <li><a href="index.html"> Home </a> <a href="about-us.html"> About us </a> <a href="terms-conditions.html"> Terms and
-                    Conditions </a> <a href="#"> Privacy Policy </a> <a href="contact.html"> Contact us </a> <a
-                        href="faq.html"> FAQ </a>
+          <div class="column">
+            <h1>Single Product</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs">
+              <li><a href="index.html">Home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li><a href="shop-grid-ls.html">Shop</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>Single Product</li>
             </ul>
-            <ul class=" pull-right navbar-link footer-nav">
-                <li> &copy; 2015 BootClassified</li>
+          </div>
+        </div>
+      </div>
+      <!-- Page Content-->
+      <div class="container padding-bottom-3x mb-1">
+        <div class="row">
+          <!-- Poduct Gallery-->
+          <div class="col-md-6">
+            <div class="product-gallery"><span class="product-badge text-danger"></span>
+              
+              <div class="gallery-wrapper">
+                <div class="gallery-item" *ngFor="let img of imgsUrl; let i = index" [ngClass]="{active: selectedImg == i}"><a href="{{imgsUrl[i]}}" (click)="selectedImg=i" [attr.data-hash]="i" data-size="1000x667"></a></div>
+                 
+              </div>
+              <div class="product-carousel owl-carousel">
+                <div *ngFor="let img of imgsUrl; let j = index" [attr.data-hash]="j"><img src="{{imgsUrl[j]}}" onError="this.src='./images/no_img.jpg';" alt="Product"></div>
+                
+              </div>
+              <ul class="product-thumbnails">
+                <li *ngFor="let img of imgsUrl; let k = index" [ngClass]="{active: selectedImg == k}"><a (click)="selectedImg=k;" [attr.data-hash]="k"><img src="{{imgsUrl[k]}}" onError="this.src='./images/no_img.jpg';" alt="Product"></a></li>
+                
+              </ul>
+            </div>
+          </div>
+          <!-- Product Info-->
+          <div class="col-md-6">
+            <div class="padding-top-2x mt-2 hidden-md-up"></div>
+              <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
+              </div><span class="text-muted align-middle">&nbsp;&nbsp;4.2 | 3 customer reviews</span>
+            <h2 class="padding-top-1x text-normal">Reebok Royal CL Jogger 2</h2><span class="h2 d-block">
+              <del class="text-muted text-normal">$68.00</del>&nbsp; $47.60</span>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta voluptatibus quos ea dolore rem, molestias laudantium et explicabo assumenda fugiat deserunt in, facilis laborum excepturi aliquid nobis ipsam deleniti aut? Aliquid sit hic id velit qui fuga nemo suscipit obcaecati. Officia nisi quaerat minus nulla saepe aperiam sint possimus magni veniam provident.</p>
+            <div class="row margin-top-1x">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="size">Men's size</label>
+                  <select class="form-control" id="size">
+                    <option>Chooze size</option>
+                    <option>11.5</option>
+                    <option>11</option>
+                    <option>10.5</option>
+                    <option>10</option>
+                    <option>9.5</option>
+                    <option>9</option>
+                    <option>8.5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label for="color">Choose color</label>
+                  <select class="form-control" id="color">
+                    <option>White/Red/Blue</option>
+                    <option>Black/Orange/Green</option>
+                    <option>Gray/Purple/White</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <select class="form-control" id="quantity">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="pt-1 mb-2"><span class="text-medium">SKU:</span> #21457832</div>
+            <div class="padding-bottom-1x mb-2"><span class="text-medium">Categories:&nbsp;</span><a class="navi-link" href="#">Men’s shoes,</a><a class="navi-link" href="#"> Snickers,</a><a class="navi-link" href="#"> Sport shoes</a></div>
+            <hr class="mb-3">
+            <div class="d-flex flex-wrap justify-content-between">
+              <div class="entry-share mt-2 mb-2"><span class="text-muted">Share:</span>
+                <div class="share-links"><a class="social-button shape-circle sb-facebook" href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="socicon-facebook"></i></a><a class="social-button shape-circle sb-twitter" href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="socicon-twitter"></i></a><a class="social-button shape-circle sb-instagram" href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><i class="socicon-instagram"></i></a><a class="social-button shape-circle sb-google-plus" href="#" data-toggle="tooltip" data-placement="top" title="Google +"><i class="socicon-googleplus"></i></a></div>
+              </div>
+              <div class="sp-buttons mt-2 mb-2">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-primary" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="icon-bag"></i> Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Product Tabs-->
+        <div class="row padding-top-3x mb-3">
+          <div class="col-lg-10 offset-lg-1">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link active" href="#description" data-toggle="tab" role="tab">Description</a></li>
+              <li class="nav-item"><a class="nav-link" href="#reviews" data-toggle="tab" role="tab">Reviews (3)</a></li>
             </ul>
-        </div>
-
-    </div>
-    <!-- /.footer -->
-
-
-<!-- Modal contactAdvertiser -->
-
-<div class="modal fade" id="reportAdvertiser" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title"><i class="fa icon-info-circled-alt"></i> There's something wrong with this ads?
-                </h4>
-            </div>
-            <div class="modal-body">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="report-reason" class="control-label">Reason:</label>
-                        <select name="report-reason" id="report-reason" class="form-control">
-                            <option value="">Select a reason</option>
-                            <option value="soldUnavailable">Item unavailable</option>
-                            <option value="fraud">Fraud</option>
-                            <option value="duplicate">Duplicate</option>
-                            <option value="spam">Spam</option>
-                            <option value="wrongCategory">Wrong category</option>
-                            <option value="other">Other</option>
-                        </select>
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="description" role="tabpanel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error blanditiis a, deserunt magnam pariatur quam suscipit quae. Veniam, deserunt reprehenderit quasi hic recusandae itaque omnis fugiat animi architecto facilis repellendus. Commodi dolorem, eius consectetur. Amet maiores nemo at nobi s aspernatur velit, sequi odio, a veritatis inventore autem esse provident in? Placeat, sunt!</p>
+                <p class="mb-30">Iste assumenda, vitae, aliquam excepturi libero quia ullam quisquam tenetur id sint labore. Pariatur praesentium velit, fugit facere maxime voluptates optio qui? Quidem obcaecati necessitatibus rem aspernatur, mollitia, assumenda explicabo numquam minus eos sapiente totam dicta, laborum dolorum! Vitae distinctio quos non ut fugiat.</p>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" src="//www.youtube.com/embed/B81qd2v6alw?rel=0" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="reviews" role="tabpanel">
+                <!-- Review-->
+                <div class="comment">
+                  <div class="comment-author-ava"><img src="img/reviews/01.jpg" alt="Review author"></div>
+                  <div class="comment-body">
+                    <div class="comment-header d-flex flex-wrap justify-content-between">
+                      <h4 class="comment-title">Average quality for the price</h4>
+                      <div class="mb-2">
+                          <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i><i class="icon-star"></i>
+                          </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-email" class="control-label">Your E-mail:</label>
-                        <input type="text" name="email" maxlength="60" class="form-control" id="recipient-email">
+                    <p class="comment-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                    <div class="comment-footer"><span class="comment-meta">Francis Burton</span></div>
+                  </div>
+                </div>
+                <!-- Review-->
+                <div class="comment">
+                  <div class="comment-author-ava"><img src="img/reviews/02.jpg" alt="Review author"></div>
+                  <div class="comment-body">
+                    <div class="comment-header d-flex flex-wrap justify-content-between">
+                      <h4 class="comment-title">My husband love his new...</h4>
+                      <div class="mb-2">
+                          <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i>
+                          </div>
+                      </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text2" class="control-label">Message <span class="text-count">(300) </span>:</label>
-                        <textarea class="form-control" id="message-text2"></textarea>
+                    <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="comment-footer"><span class="comment-meta">Maggie Scott</span></div>
+                  </div>
+                </div>
+                <!-- Review-->
+                <div class="comment">
+                  <div class="comment-author-ava"><img src="img/reviews/03.jpg" alt="Review author"></div>
+                  <div class="comment-body">
+                    <div class="comment-header d-flex flex-wrap justify-content-between">
+                      <h4 class="comment-title">Soft, comfortable, quite durable...</h4>
+                      <div class="mb-2">
+                          <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
+                          </div>
+                      </div>
                     </div>
+                    <p class="comment-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    <div class="comment-footer"><span class="comment-meta">Jacob Hammond</span></div>
+                  </div>
+                </div>
+                <!-- Review Form-->
+                <h5 class="mb-30 padding-top-1x">Leave Review</h5>
+                <form class="row" method="post">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="review_name">Your Name</label>
+                      <input class="form-control form-control-rounded" type="text" id="review_name" required>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="review_email">Your Email</label>
+                      <input class="form-control form-control-rounded" type="email" id="review_email" required>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="review_subject">Subject</label>
+                      <input class="form-control form-control-rounded" type="text" id="review_subject" required>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="review_rating">Rating</label>
+                      <select class="form-control form-control-rounded" id="review_rating">
+                        <option>5 Stars</option>
+                        <option>4 Stars</option>
+                        <option>3 Stars</option>
+                        <option>2 Stars</option>
+                        <option>1 Star</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="review_text">Review </label>
+                      <textarea class="form-control form-control-rounded" id="review_text" rows="8" required></textarea>
+                    </div>
+                  </div>
+                  <div class="col-12 text-right">
+                    <button class="btn btn-outline-primary" type="submit">Submit Review</button>
+                  </div>
                 </form>
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Send Report</button>
-            </div>
+          </div>
         </div>
-    </div>
-</div>
-
-<!-- /.modal -->
-
-<!-- Modal contactAdvertiser -->
-
-<div class="modal fade" id="contactAdvertiser" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title"><i class=" icon-mail-2"></i> Contact advertiser </h4>
+        <!-- Related Products Carousel-->
+        <h3 class="text-center padding-top-2x mt-2 padding-bottom-1x">You May Also Like</h3>
+        <!-- Carousel-->
+        <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
+          <!-- Product-->
+          <div class="grid-item">
+            <div class="product-card">
+              <div class="product-badge text-danger">22% Off</div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/09.jpg" alt="Product"></a>
+              <h3 class="product-title"><a href="shop-single.html">Rocket Dog</a></h3>
+              <h4 class="product-price">
+                <del>$44.95</del>$34.99
+              </h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+              </div>
             </div>
-            <div class="modal-body">
-                <form role="form">
-                    <div class="form-group">
-                        <label for="recipient-name" class="control-label">Name:</label>
-                        <input class="form-control required" id="recipient-name" placeholder="Your name"
-                               data-placement="top" data-trigger="manual"
-                               data-content="Must be at least 3 characters long, and must only contain letters."
-                               type="text">
-                    </div>
-                    <div class="form-group">
-                        <label for="sender-email" class="control-label">E-mail:</label>
-                        <input id="sender-email" type="text"
-                               data-content="Must be a valid e-mail address (user@gmail.com)" data-trigger="manual"
-                               data-placement="top" placeholder="email@you.com" class="form-control email">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-Phone-Number" class="control-label">Phone Number:</label>
-                        <input type="text" maxlength="60" class="form-control" id="recipient-Phone-Number">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="control-label">Message <span class="text-count">(300) </span>:</label>
-                        <textarea class="form-control" id="message-text" placeholder="Your message here.."
-                                  data-placement="top" data-trigger="manual"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not
-                            valid. </p>
-                    </div>
-                </form>
+          </div>
+          <!-- Product-->
+          <div class="grid-item">
+            <div class="product-card">
+                <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
+                </div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/03.jpg" alt="Product"></a>
+              <h3 class="product-title"><a href="shop-single.html">Oakley Kickback</a></h3>
+              <h4 class="product-price">$155.00</h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-success pull-right">Send message!</button>
+          </div>
+          <!-- Product-->
+          <div class="grid-item">
+            <div class="product-card"><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/12.jpg" alt="Product"></a>
+              <h3 class="product-title"><a href="shop-single.html">Vented Straw Fedora</a></h3>
+              <h4 class="product-price">$49.50</h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+              </div>
             </div>
+          </div>
+          <!-- Product-->
+          <div class="grid-item">
+            <div class="product-card">
+                <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i>
+                </div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/11.jpg" alt="Product"></a>
+              <h3 class="product-title"><a href="shop-single.html">Top-Sider Fathom</a></h3>
+              <h4 class="product-price">$90.00</h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div class="grid-item">
+            <div class="product-card"><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/04.jpg" alt="Product"></a>
+              <h3 class="product-title"><a href="shop-single.html">Waist Leather Belt</a></h3>
+              <h4 class="product-price">$47.00</h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div class="grid-item">
+            <div class="product-card">
+              <div class="product-badge text-danger">50% Off</div><a class="product-thumb" href="shop-single.html"><img src="img/shop/products/01.jpg" alt="Product"></a>
+              <h3 class="product-title"><a href="shop-single.html">Unionbay Park</a></h3>
+              <h4 class="product-price">
+                <del>$99.99</del>$49.99
+              </h4>
+              <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+
+    
+<!-- Photoswipe container-->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+            <button class="pswp__button pswp__button--share" title="Share"></button>
+            <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+            <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+          <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center"></div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<script src="assets/plugins/bxslider/jquery.bxslider.min.js"></script>
-<script>
-    console.log("cuida");
-    $('.bxslider').bxSlider({
-        pagerCustom: '#bx-pager'
-    });
-
-
-</script>

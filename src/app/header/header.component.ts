@@ -2,8 +2,10 @@ import { Component,Input, OnInit } from '@angular/core';
 import { LoginService }    from '../login/login.service';
 
 @Component({
-  selector: 'header',
+  selector: 'header-component',
+  styleUrls: ['./header.component.css'],
   templateUrl: './header.component.html'
+
 })
 export class HeaderComponent {
 	constructor(private loginService : LoginService){}

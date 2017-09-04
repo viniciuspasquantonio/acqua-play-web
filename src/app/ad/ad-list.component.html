@@ -36,14 +36,10 @@
                   </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
                 </div>
               </div>
-              <div class="column"> {{isList}}
-                <div class="shop-view">
-                    <a class="grid-view" (click)="isList=false;"><span></span><span></span><span></span></a><a class="list-view" (click)="isList=true;"><span></span><span></span><span></span></a></div>
-              </div>
+              
             </div>
-            <!-- grid -->
-            <ad-grid [ads]="ads" *ngIf="isList==false"></ad-grid>
-            <ad-ls [ads]="ads" *ngIf="isList==true"></ad-ls>
+            
+            <ad-ls [ads]="ads" [imgs]="imgs"></ad-ls>
             <!-- Pagination-->
             <nav class="pagination">
               <div class="column">

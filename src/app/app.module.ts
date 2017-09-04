@@ -15,6 +15,8 @@ import { AdService } from './ad/ad.service';
 import {LoginService} from './login/login.service';
 import { CanActivateViaOAuthGuard } from './oauth/can-activate-guard';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
 import { UserHeaderComponent } from './header/user/user-header.component';
 import { DefaultHeaderComponent } from './header/default/default-header.component';
 import {UserService} from './user/user.service';
@@ -72,7 +74,8 @@ import {AdLsComponent} from './ad/ad-ls.component';
     AdChatComponent,
     ChatComponent,
     AdGridComponent,
-    AdLsComponent
+    AdLsComponent,
+    FooterComponent
 
     
     

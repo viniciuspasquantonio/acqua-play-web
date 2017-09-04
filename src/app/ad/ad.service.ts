@@ -3,6 +3,8 @@ import { Http, Response, Headers,URLSearchParams} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Ad } from './ad.model';
 import {HttpService} from '../oauth/auth-http.service';
+import { Page } from '../page.model';
+
 
 @Injectable()
 export class AdService {
@@ -15,6 +17,20 @@ export class AdService {
     return this.authHttp
       .get(this.adsUrl, {headers: this.getHeaders()})
       .map(mapAds)
+      .catch(handleErrors);      
+      
+  }
+
+  search(search:string,page:number,size:number): Observable<Page>{
+    let params: URLSearchParams = new URLSearchParams();
+     params.set('search', search);
+     params.set('size', ''+size);
+     params.set('page', ''+page);
+     params.set('sort', 'title');
+      params.set('access_token', localStorage.getItem("token")   );
+    return this.authHttp
+      .get(`${this.baseUrl}ads/search/`, {search:params,headers: this.getHeaders()})
+      .map(mapPage)
       .catch(handleErrors);      
       
   }
@@ -87,6 +103,12 @@ export class AdService {
 
  }
  function mapAds(response:Response): Ad[]{
+   // The response of the API has a results
+   // property with the actual results  
+   return response.json();
+  }
+
+  function mapPage(response:Response): Page{
    // The response of the API has a results
    // property with the actual results  
    return response.json();

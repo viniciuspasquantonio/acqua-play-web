@@ -14,4 +14,5 @@ export class Ad {
     defaultImage: string;
     categoryId: number;
     keyWords: string;
+    category:string;
 }
