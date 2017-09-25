@@ -12,11 +12,13 @@ import { UserService }    from '../user/user.service';
 
 import 'rxjs/add/operator/switchMap';
 
+import { AlertService }    from '../alert/alert.service';
+
 
 @Component({
   moduleId: module.id,
   selector: 'ad-edit',
-  styleUrls: ['../app.component.css'],
+  
   templateUrl: './ad-edit.component.html'
 })
 export class AdEditComponent {
@@ -25,7 +27,8 @@ export class AdEditComponent {
     	private adService: AdService,      
       private route: ActivatedRoute,
        private userService: UserService,
-        private router: Router
+        private router: Router,
+        private alertService: AlertService
     	//private route: ActivatedRoute,
     	//private location: Location
   	) {}
@@ -49,7 +52,7 @@ export class AdEditComponent {
     	this.uploadUrl = 'http://localhost:8080/upload/?access_token='+localStorage.getItem("token");
       this.route.params
       // (+) converts string 'id' to a number
-      .switchMap(params => this.adService.get(+params['id']))
+      .switchMap(params => this.adService.get(params['id']))
       .subscribe(a => { 
                         console.log('a',a);
                         this.ad = a;
@@ -78,10 +81,11 @@ export class AdEditComponent {
           .update(this.ad)
 		        .subscribe(
               a => {
+                  this.alertService.success("Anuncio alterado com sucesso",true);
                       this.router.navigate(['/account-home', {outlets: {'account': ['myads']}}]);
               },
                 e => {
-                alert(e);
+                this.alertService.error(e);
               }
             );
 		
@@ -104,7 +108,7 @@ export class AdEditComponent {
   }
 
   imageUploaded($event): void {
-			console.log('event', $event);
+			
   		this.ad.images.push($event.file.name);
 	}
 

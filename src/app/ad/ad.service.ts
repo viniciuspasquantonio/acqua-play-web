@@ -23,10 +23,12 @@ export class AdService {
 
   search(search:string,page:number,size:number): Observable<Page>{
     let params: URLSearchParams = new URLSearchParams();
+  
      params.set('search', search);
      params.set('size', ''+size);
      params.set('page', ''+page);
      params.set('sort', 'title');
+   
       params.set('access_token', localStorage.getItem("token")   );
     return this.authHttp
       .get(`${this.baseUrl}ads/search/`, {search:params,headers: this.getHeaders()})
@@ -35,11 +37,12 @@ export class AdService {
       
   }
 
-  findBySeller(seller:number): Observable<Ad[]>{
+  findBySeller(seller:string): Observable<Ad[]>{
     let params: URLSearchParams = new URLSearchParams();
-     params.set('seller', ''+seller);
+     params.set('sellerId', seller);
+     params.set('access_token', localStorage.getItem("token")   );
     return this.authHttp
-      .get(`${this.baseUrl}ads/findBySeller/${seller}`, {search:params,headers: this.getHeaders()})
+      .get(`${this.baseUrl}ads/findBySeller`, {search:params,headers: this.getHeaders()})
       .map(mapAds)
       .catch(handleErrors);      
       
@@ -82,7 +85,7 @@ export class AdService {
 
   update(ad: Ad): Observable<Ad> {    
     return this.authHttp
-      .put(`${this.baseUrl}/ads/${ad.id}`, JSON.stringify(ad), {headers: this.getHeaders()})
+      .put(`${this.baseUrl}/ads/`, JSON.stringify(ad), {headers: this.getHeaders()})
       .map(mapAd)
       .catch(handleErrors);  
   }

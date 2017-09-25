@@ -1,15 +1,15 @@
 <!-- Product-->
 <div class="product-card product-list" *ngFor="let ad of ads;" >
   <a class="product-thumb" [routerLink]="['/ads/info', ad.id]">
-    <img class="img-responsive" src="{{imgs[ad.id]}}" onError="this.src='./images/no_img.jpg';" alt="Product"/>
+    <img  class="product-img" src="{{imgs[ad.id]}}" onError="this.src='./images/no_img.jpg';" alt="Product"/>
   </a>
     
   <div class="product-info">
     <h3 class="product-title"><a [routerLink]="['/ads/info', ad.id]">{{ad.title}}</a></h3>
     <h4 class="product-price">
-      {{ad.price}}
+      R$ {{ad.price}}
     </h4>
-    <p class="hidden-xs-down">{{ad.description}}</p>
+    <p class="hidden-xs-down"></p>
 
     <div class="product-buttons">
       <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>

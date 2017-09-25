@@ -376,6 +376,7 @@ figure {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+
 }
 
 svg {
@@ -6402,7 +6403,12 @@ video {
 
 .product-card .product-thumb > img {
   display: block;
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto!important;
+  max-height: 150px;
+  vertical-align: middle;
+  margin: auto;
 }
 
 .product-card .product-title {

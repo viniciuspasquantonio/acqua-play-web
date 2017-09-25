@@ -28,7 +28,8 @@ export class UserHeaderComponent {
   }
 
   search(): void {
-    this.router.navigate(['ads/',this.siteSearch]);
+    this.router.navigate(['/ads-list/', this.siteSearch,'']);
+
       
   }
 }

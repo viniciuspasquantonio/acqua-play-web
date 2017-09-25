@@ -1,80 +1,41 @@
-<div class="main-container">
+<!-- Page Content-->
+    <div class="page-title">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3 page-sidebar">
-                    <aside>
-                        <div class="inner-box">
-                            <div class="user-panel-sidebar">
-                                <div class="collapse-box">
-                                    <h5 class="collapse-title no-border"> Minha Conta <a href="#MyClassified"
-                                                                                           data-toggle="collapse"
-                                                                                           class="pull-right"><i
-                                            class="fa fa-angle-down"></i></a></h5>
-
-                                    <div class="panel-collapse collapse in" id="MyClassified">
-                                        <ul class="acc-list">
-                                            <li><a class="active" [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]"><i class="icon-home"></i>
-                                                Meu Cadastro </a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- /.collapse-box  -->
-                                <div class="collapse-box">
-                                    <h5 class="collapse-title"> Meus Anuncios <a href="#MyAds" data-toggle="collapse"
-                                                                          class="pull-right"><i
-                                            class="fa fa-angle-down"></i></a></h5>
-
-                                    <div class="panel-collapse collapse in" id="MyAds">
-                                        <ul class="acc-list">
-                                            <li><a [routerLink]="['/account-home', {outlets: {'account': ['myads']}}]"><i class="icon-docs"></i> My ads <span
-                                                    class="badge">42</span> </a></li>
-                                            <li><a ><i class="icon-heart"></i>
-                                                Favourite ads <span class="badge">42</span> </a></li>
-                                            <li><a ><i class="icon-star-circled"></i>
-                                                Saved search <span class="badge">42</span> </a></li>
-                                            <li><a ><i class="icon-folder-close"></i>
-                                                Archived ads <span class="badge">42</span></a></li>
-                                            <li><a [routerLink]="['/account-home', {outlets: {'account': ['pending-ads']}}]"><i
-                                                    class="icon-hourglass"></i> Pending approval <span
-                                                    class="badge">42</span></a></li>
-                                            <li><a [routerLink]="['/account-home', {outlets: {'account': ['chats']}}]"><i
-                                                    class="icon-hourglass"></i> Mensagens <span
-                                                    class="badge">42</span></a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- /.collapse-box  -->
-
-                                <div class="collapse-box">
-                                    <h5 class="collapse-title"> Terminate Account <a href="#TerminateAccount"
-                                                                                     data-toggle="collapse"
-                                                                                     class="pull-right"><i
-                                            class="fa fa-angle-down"></i></a></h5>
-
-                                    <div class="panel-collapse collapse in" id="TerminateAccount">
-                                        <ul class="acc-list">
-                                            <li><a href="account-close.html"><i class="icon-cancel-circled "></i> Close
-                                                account </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- /.collapse-box  -->
-                            </div>
-                        </div>
-                        <!-- /.inner-box  -->
-
-                    </aside>
-                </div>
-                <!--/.page-sidebar-->
-
-                <div class="col-sm-9 page-content">
-                    <router-outlet name="account"></router-outlet>
-                <!--/.page-content-->
-                </div>
-                <!--/.row-->
+          <div class="column">
+            <h1>ADS</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs">
+              <li><a href="index.html">Home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li><a href="shop-grid-ls.html">Shop</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>Single Product</li>
+            </ul>
+          </div>
         </div>
-        <!--/.container-->
-    </div>
-    <!-- /.main-container -->
+      </div>
+      <div class="container padding-bottom-3x mb-2">
+        <div class="row">
+          <div class="col-lg-4">
+            
+            <nav class="list-group">
+                <a class="list-group-item" [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]"><i class="icon-head"></i>Meu Cadastro</a>
+                <a class="list-group-item justify-content-between" [routerLink]="['/account-home', {outlets: {'account': ['myads']}}]"><span><i class="icon-bag"></i>Meus Anuncios</span><span class="badge badge-primary badge-pill"></span></a>
+                
+                
+                <a class="list-group-item justify-content-between" [routerLink]="['/account-home', {outlets: {'account': ['wishlist']}}]"><span><i class="icon-heart"></i>Wishlist</span><span class="badge badge-primary badge-pill"></span></a>
+
+                 <a class="list-group-item justify-content-between" [routerLink]="['/account-home', {outlets: {'account': ['chats']}}]"><span><i class="icon-heart"></i>Mensagens</span><span class="badge badge-primary badge-pill"></span></a>
+                
+            </nav>
+          </div>
+          <div class="col-lg-8">
+            <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+            <router-outlet name="account"></router-outlet>
+            
+          </div>
+        </div>
+      </div>

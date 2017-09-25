@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+
 @Injectable()
 export class HttpService extends Http {
 
@@ -35,6 +36,8 @@ export class HttpService extends Http {
       if (res.status === 401 || res.status === 403) {
         // if not authenticated
         console.log(res);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
       }
       return Observable.throw(res);
     };

@@ -39,6 +39,8 @@ export class AdListComponent implements OnInit {
   @Input()
   searchText: string = null;
 
+ 
+
 page:number = 0;
 size:number = 20;
   constructor(
@@ -47,9 +49,7 @@ size:number = 20;
     private categoryService: CategoryService) {}
   
   ngOnInit(): void {
-    this.categoryService.getAll().subscribe(
-                          a => {this.categories = a;});
-    
+   
       this.route.params
       .switchMap(params => this.adService.search(params['search'],this.page,this.size))
       .subscribe(a => {
@@ -75,6 +75,10 @@ size:number = 20;
          /* error path */ e => {
            this.errorMessage = e;});
     
+  }
+
+  addCategoryFilter(category:Category): void{
+    console.log("filter by category ", category.name);
   }
 
 

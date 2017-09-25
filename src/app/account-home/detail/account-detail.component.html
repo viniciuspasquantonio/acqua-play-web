@@ -1,68 +1,48 @@
-
-<div class="inner-box">
-        
-        <div id="accordion" class="panel-group">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#collapseB1" data-toggle="collapse"> Meu Cadastro </a></h4>
+<form class="row" (ngSubmit)="onSubmit()" #accountDetailForm="ngForm">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="account-fn">Nome</label>
+                  <input class="form-control" type="text" [(ngModel)]="user.firstName" name="firstName" value="Daniel" required>
                 </div>
-                <div class="panel-collapse collapse in" id="collapseB1">
-                    <div class="panel-body">
-                        
-                        <form class="form-horizontal" (ngSubmit)="onSubmit()" #accountDetailForm="ngForm">
-                            
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Nome</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="user.firstName" name="firstName" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Sobrenome</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Email</label>
-
-                                <div class="col-sm-9">
-                                    {{user.email}}
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Phone" class="col-sm-3 control-label">Telefone</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="Phone"
-                                           [(ngModel)]="user.phone" name="phone" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">Apartamento</label>
-
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" [(ngModel)]="user.apartment" name="apartment" required>
-                                </div>
-                                <label class="col-sm-3 control-label">Torre</label>
-
-                                <div class="col-sm-3">
-                                    <input type="text" class="form-control" [(ngModel)]="user.tower" name="tower" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="col-sm-offset-3 col-sm-9">
-                                    <button type="button" class="btn btn-default" [disabled]="!accountDetailForm.form.valid" (click)="update(user);">Salvar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="account-ln">Sobrenome</label>
+                  <input class="form-control" type="text" [(ngModel)]="user.lastName" name="lastName" value="Adams" required>
                 </div>
-            </div>
-            
-
-    </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="account-email">E-mail</label>
+                  <input class="form-control" type="email" [(ngModel)]="user.email" name="email" disabled>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="account-phone">Telefone</label>
+                  <input class="form-control" type="text" [(ngModel)]="user.phone" name="phone" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="account-confirm-pass">Apartamento</label>
+                  <input class="form-control" type="text" [(ngModel)]="user.apartment" name="apartment" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="account-pass">Torre</label>
+                  <input class="form-control" [(ngModel)]="user.tower" name="tower" id="account-pass">
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <hr class="mt-2 mb-3">
+                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                  <label class="custom-control custom-checkbox d-block">
+                    <input class="custom-control-input" type="checkbox" checked><span class="custom-control-indicator"></span><span class="custom-control-description">Subscribe me to Newsletter</span>
+                  </label>
+                  <button class="btn btn-primary margin-right-none" type="button" [disabled]="!accountDetailForm.form.valid" (click)="update(user);">Salvar</button>
+                </div>
+              </div>
+            </form>

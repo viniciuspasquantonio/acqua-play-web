@@ -12,6 +12,8 @@ import { LoginService }    from '../../login/login.service';
 import { User }    from '../../user/user.model';
 import { Ad }    from '../../ad/ad.model';
 import { AdService }    from '../../ad/ad.service';
+import { AlertService } from '../../alert/alert.service';
+
 
 
 
@@ -19,7 +21,6 @@ import { AdService }    from '../../ad/ad.service';
 @Component({
   moduleId: module.id,
   selector: 'account-ads-detail',
-  styleUrls: ['../../app.component.css'],
   templateUrl: './account-ads.component.html'
 })
 export class AccountAdsComponent {
@@ -31,12 +32,13 @@ export class AccountAdsComponent {
 	  constructor(
 	    private adService: AdService,
 	    private router: Router,
-	    private loginService :LoginService) {}
+	    private loginService :LoginService,
+	    private alertService: AlertService) {}
 	  
 	  ngOnInit(): void {
 	  	this.user = this.loginService.currentUser();
-	    // this.adService.findBySeller(this.user.username).subscribe(
-	    this.adService.findBySeller(this.user.id).subscribe(
+	    
+	    this.adService.findBySeller(''+this.user.id).subscribe(
 	         /* happy path */ a => {
 	                                    this.ads = a;
 	                                    for (let ad of a) {
@@ -57,7 +59,7 @@ export class AccountAdsComponent {
 	         /* happy path */ imgUrl => {
 	         								this.imgs[ad.id] = imgUrl},
 	         /* error path */ e => {
-	           this.errorMessage = e;},
+	           this.alertService.error(e);},
 	         /* onComplete */ () => this.isLoading = false);
 	    
 	  }

@@ -2,29 +2,44 @@
 
 
     <header class="navbar navbar-sticky">
+      
+
       <!-- Search-->
-      <form class="site-search" (ngSubmit)="onSubmit()" #siteSearchForm="ngForm">
-        <input type="text" name="siteSearch" [(ngModel)]="siteSearch" placeholder="O que procura..." required>
-        <div class="search-tools">
-            <span class="clear-search" (click)="search();">Buscar</span>
-            <span class="clear-search">Clear</span>
-            <span class="close-search"><i class="icon-cross"></i></span>
-        </div>
-      </form>
-      <div class="site-branding">
-        <div class="inner">
-         
-          <!-- Site Logo--><a class="site-logo" href="index.html"><img src="img/logo/pasquantonio.png" alt="Catalogo Acqua"></a>
-        </div>
-      </div>
+      
+      
       <!-- Main Navigation-->
+      <div class="container site-branding">
+        <div class="row" >
+          <div class="col-2">
+            <a class="site-logo" href="index.html"><img src="img/logo/pasquantonio.png" alt="Catalogo Acqua"></a>
+          </div>
+          
+          <div class="col-6">
+            
+              <form >
+                <div class="input-group">
+                  <input type="text" name="siteSearch" [(ngModel)]="siteSearch"  class="form-control" placeholder="O que procura...">
+                  <div class="input-group-btn">
+                    <button class="btn btn-default" (click)="search();">
+                      <i class="icon-search"></i>
+                    </button>
+                  </div>
+                </div>
+              </form> 
+            
+          </div>
+          <div class="col-4">
+          </div>
+        </div>  
+      </div>
+      
+      
       
       <!-- Toolbar-->
       <div class="toolbar">
         <div class="inner">
           <div class="tools">
-            <div class="search"><i class="icon-search"></i></div>
-            <div class="account"><a href="account-orders.html"></a><i class="icon-head"></i>
+            <div class="account"><a [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]"></a><i class="icon-head"></i>
               <ul class="toolbar-dropdown">
                 <li class="sub-menu-title"><span>Olá,</span> {{user.firstName}} {{user.lastName}}</li>
                   <li><a [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]">Meu Cadastro</a></li>

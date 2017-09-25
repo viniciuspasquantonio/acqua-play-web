@@ -1,6 +1,5 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit,ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 
 
 
@@ -17,13 +16,14 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   moduleId: module.id,
   selector: 'ad-info', 
-  styleUrls: ['../../css/carousel.css','../../css/gallery.css','../../css/list-group.css','../../css/shop.css'], 
+  styleUrls: ['./ad-info.component.css'],
   templateUrl: './ad-info.component.html'
 })
 export class AdInfoComponent { 
 	ad:Ad = new Ad();
   seller:User = new User();
   imgsUrl:string[] = [];
+    
 
  selectedImg:number = 0;
   constructor(
@@ -34,29 +34,6 @@ export class AdInfoComponent {
 
     	
   	) {}
-	
-	
-	ngOnInit(): void {
-      
-      this.route.params
-      .switchMap(params => this.adService.get(params['id']))
-      .subscribe(a => {
-                        this.ad = a;
-                        //this.userService.findByUserId(a.sellerId).subscribe(user => {this.seller = user});
-                        a.images.forEach((img, index) => {
-                            this.adService.getImageSrc(a,index).subscribe(imgSrc => {
-                            
-                              this.imgsUrl[index] = imgSrc;
-                          
-                            });
-                        });
-                                   
-                      },
-                    e => {
-                        console.log(e);
-                      }
-                  );  
 
-  }
 }
 

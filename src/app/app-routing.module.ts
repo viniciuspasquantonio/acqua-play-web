@@ -18,11 +18,16 @@ import { AdChatComponent }  from './chat/ad-chat.component';
 import { ChatComponent }  from './chat/chat.component';
 
 
+
+
 const routes: Routes = [
   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent },
-  { path: 'ads/:search',  component: AdListComponent, canActivate: [
+  { path: 'home',  component: HomeComponent, canActivate: [
+    
+    CanActivateViaOAuthGuard
+  ]   },
+  { path: 'ads-list/:search/:category',  component: AdListComponent, canActivate: [
     
     CanActivateViaOAuthGuard
   ]   },

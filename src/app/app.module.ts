@@ -26,6 +26,7 @@ import {CategoryService} from './category/category.service';
 
 
 
+
 import {AdListComponent} from './ad/ad-list.component';
 import {AdRoutingModule} from './ad/ad-routing.module';
 import {AdInfoComponent} from './ad/ad-info.component';
@@ -45,7 +46,8 @@ import {ChatComponent} from './chat/chat.component';
 import {AdGridComponent} from './ad/ad-grid.component';
 import {AdLsComponent} from './ad/ad-ls.component';
 
-
+import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './alert/alert.service';
 
 
 
@@ -75,7 +77,8 @@ import {AdLsComponent} from './ad/ad-ls.component';
     ChatComponent,
     AdGridComponent,
     AdLsComponent,
-    FooterComponent
+    FooterComponent,
+    AlertComponent
 
     
     
@@ -88,8 +91,8 @@ import {AdLsComponent} from './ad/ad-ls.component';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
-    ImageUploadModule.forRoot(),
-    NgxGalleryModule
+    ImageUploadModule.forRoot()
+
      
   ],
   providers: [
@@ -100,7 +103,8 @@ import {AdLsComponent} from './ad/ad-ls.component';
                 UserService,
                 HttpService,
                 ChatService,
-                CategoryService
+                CategoryService,
+                AlertService
                                 
               ],
   bootstrap: [AppComponent]
