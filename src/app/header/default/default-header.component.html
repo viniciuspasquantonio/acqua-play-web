@@ -1,33 +1,8 @@
 
-
-
-    <header class="navbar navbar-sticky">
-      <!-- Search-->
-      <form class="site-search" method="get">
-        <input type="text" name="site_search" placeholder="Type to search...">
-        <div class="search-tools"><span class="clear-search">Clear</span><span class="close-search"><i class="icon-cross"></i></span></div>
-      </form>
-      <div class="site-branding">
-        <div class="inner">
-         
-          <!-- Site Logo--><a class="site-logo" href="index.html"><img src="img/logo/pasquantonio.png" alt="Catalogo Acqua"></a>
-        </div>
-      </div>
-      <!-- Main Navigation-->
-      
-      <!-- Toolbar-->
-      <div class="toolbar">
-        <div class="inner">
-          <div class="tools">
-            <div ></div>
-            <div >
-            </div>
-            
-                <button [routerLink]="['/ads/new']" type="button" class="btn btn-primary">Poste um anuncio gratuitamente</button>
-            
-            
-            
-          </div>
-        </div>
-      </div>
-    </header>
+    <md-toolbar color="primary">
+        <span>Acqua </span>
+        <span class="fill-remaining-space"></span>
+        
+        
+        <button md-raised-button color="primary" routerLink="/ads/new">Poste um anuncio gratuitamente</button>
+    </md-toolbar>

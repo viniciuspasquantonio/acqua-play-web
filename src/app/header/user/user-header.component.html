@@ -1,61 +1,35 @@
 
 
-
-    <header class="navbar navbar-sticky">
-      
-
-      <!-- Search-->
-      
-      
-      <!-- Main Navigation-->
-      <div class="container site-branding">
-        <div class="row" >
-          <div class="col-2">
-            <a class="site-logo" href="index.html"><img src="img/logo/pasquantonio.png" alt="Catalogo Acqua"></a>
-          </div>
-          
-          <div class="col-6">
-            
-              <form >
-                <div class="input-group">
-                  <input type="text" name="siteSearch" [(ngModel)]="siteSearch"  class="form-control" placeholder="O que procura...">
-                  <div class="input-group-btn">
-                    <button class="btn btn-default" (click)="search();">
-                      <i class="icon-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </form> 
-            
-          </div>
-          <div class="col-4">
-          </div>
-        </div>  
-      </div>
-      
-      
-      
-      <!-- Toolbar-->
-      <div class="toolbar">
-        <div class="inner">
-          <div class="tools">
-            <div class="account"><a [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]"></a><i class="icon-head"></i>
-              <ul class="toolbar-dropdown">
-                <li class="sub-menu-title"><span>Olá,</span> {{user.firstName}} {{user.lastName}}</li>
-                  <li><a [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]">Meu Cadastro</a></li>
-                  
-                  <li><a [routerLink]="['/account-home', {outlets: {'account': ['myads']}}]">Meus Anuncios</a></li>
-                  <li><a [routerLink]="['/account-home', {outlets: {'account': ['chats']}}]">Mensagens</a></li>
-                <li class="sub-menu-separator"></li>
-                <li (click)="logout();"><a routerLink="/login"> <i class="icon-unlock"></i>Logout</a></li>
-              </ul>
-            </div>
-            
-                <button routerLink="/ads/new" type="button" class="btn btn-primary">Poste um anuncio gratuitamente</button>
-            
-            
-            
-          </div>
-        </div>
-      </div>
-    </header>
+    <md-toolbar color="primary">
+        <span>Acqua </span>
+        <span class="fill-remaining-space"></span>
+        <form class="example-form">
+          <md-form-field class="full-width">
+            <input mdInput placeholder="O que procura..." name="siteSearch" [(ngModel)]="siteSearch" type="search"/>
+          </md-form-field>
+        </form>
+        <button md-icon-button (click)="search();"><md-icon class="material-icons">&#xE8B6;</md-icon></button>
+        <span class="fill-remaining-space"></span>
+        <button md-icon-button [mdMenuTriggerFor]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu #menu="mdMenu">
+          <button md-menu-item [routerLink]="['/account-home', {outlets: {'account': ['detail']}}]">
+            <md-icon>&#xE853;</md-icon>
+            <span>Cadastro</span>
+          </button>
+          <button md-menu-item [routerLink]="['/account-home', {outlets: {'account': ['myads']}}]">
+            <md-icon>&#xE8CC;</md-icon>
+            <span>Anuncios</span>
+          </button>
+          <button md-menu-item [routerLink]="['/account-home', {outlets: {'account': ['chats']}}]">
+            <md-icon>&#xE0C9;</md-icon>
+            <span>Mensagens</span>
+          </button>
+          <button md-menu-item (click)="logout();">
+            <md-icon>&#xE5C9;</md-icon>
+            <span>Logout</span>
+          </button>
+        </md-menu>
+        <button md-raised-button color="primary" routerLink="/ads/new">Poste um anuncio gratuitamente</button>
+    </md-toolbar>

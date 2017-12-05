@@ -20,7 +20,6 @@ import { CategoryService }    from '../category/category.service';
 @Component({
   moduleId: module.id,
   selector: 'ad-list',
-  styleUrls: ['./ad-list.component.css'],
   templateUrl: './ad-list.component.html',
   providers: [AdService]
 })

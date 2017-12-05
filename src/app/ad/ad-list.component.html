@@ -1,5 +1,7 @@
 
-    <div class="offcanvas-wrapper">
+    
+
+
       <!-- Page Title-->
       <div class="page-title">
         <div class="container">
@@ -16,52 +18,6 @@
           </div>
         </div>
       </div>
-      <!-- Page Content-->
-      <div class="container padding-bottom-3x mb-1">
-        <div class="row">
-          <!-- Products-->
-          <div class="col-xl-9 col-lg-8 push-xl-3 push-lg-4">
-            <!-- Shop Toolbar-->
-            <div class="shop-toolbar padding-bottom-1x mb-2">
-              <div class="column">
-                <div class="shop-sorting">
-                  <label for="sorting">Sort by:</label>
-                  <select class="form-control" id="sorting">
-                    <option>Popularity</option>
-                    <option>Low - High Price</option>
-                    <option>High - Low Price</option>
-                    <option>Avarage Rating</option>
-                    <option>A - Z Order</option>
-                    <option>Z - A Order</option>
-                  </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
-                </div>
-              </div>
-              
-            </div>
-            
-            <ad-ls [ads]="ads" [imgs]="imgs"></ad-ls>
-            <!-- Pagination-->
-            <nav class="pagination">
-              <div class="column">
-                <ul class="pages">
-                  <li class="active"><a href="#">1</a></li>
-                  
-                </ul>
-              </div>
-              <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
-            </nav>
-          </div>
-          <!-- Sidebar          -->
-          <div class="col-xl-3 col-lg-4 pull-xl-9 pull-lg-8">
-            <aside class="sidebar">
-              <div class="padding-top-2x hidden-lg-up"></div>
-              
-              <!-- Widget Price Range-->
-              
-              
-            </aside>
-          </div>
-        </div>
-      </div>
-    </div>
+      <ad-ls [ads]="ads" [imgs]="imgs"></ad-ls>
+      
         

@@ -5,7 +5,7 @@ import { Ad } from './ad.model';
 @Component({
   moduleId: module.id,
   selector: 'ad-ls',
- 
+
   templateUrl: './ad-ls.component.html'
   
 })

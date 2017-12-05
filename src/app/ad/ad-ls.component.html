@@ -1,21 +1,20 @@
-<!-- Product-->
-<div class="product-card product-list" *ngFor="let ad of ads;" >
-  <a class="product-thumb" [routerLink]="['/ads/info', ad.id]">
-    <img  class="product-img" src="{{imgs[ad.id]}}" onError="this.src='./images/no_img.jpg';" alt="Product"/>
-  </a>
-    
-  <div class="product-info">
-    <h3 class="product-title"><a [routerLink]="['/ads/info', ad.id]">{{ad.title}}</a></h3>
-    <h4 class="product-price">
-      R$ {{ad.price}}
-    </h4>
-    <p class="hidden-xs-down"></p>
 
-    <div class="product-buttons">
-      <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-      <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-    </div>
-  </div>
-</div>
-
-            
+<md-grid-list cols="4" rowHeight="380">
+  <md-grid-tile *ngFor="let ad of ads" role="listitem"
+     >
+    <md-card >
+      <a [routerLink]="['/ads/info', ad.id]"><img md-card-lg-image src="{{imgs[ad.id]}}" onError="this.src='./images/no_img.jpg';" ></a>
+      <md-card-content>
+        <p>
+         <a [routerLink]="['/ads/info', ad.id]">{{ad.title}}</a>
+        <p>
+         <a [routerLink]="['/ads/info', ad.id]">R$ {{ad.price}}</a>
+      </md-card-content>
+      <md-card-actions>
+        <button md-icon-button (click)="addToWishlist();" mdTooltip="Adicionar a lista de desejos"><md-icon color="accent" class="material-icons">&#xE87D;</md-icon></button>
+        <button md-icon-button (click)="addToCart();" mdTooltip="Adicionar ao carrinho"><md-icon color="primary" class="material-icons">&#xE854;</md-icon></button>
+      </md-card-actions>
+    </md-card>               
+  </md-grid-tile>
+</md-grid-list> 
+  

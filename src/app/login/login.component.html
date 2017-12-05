@@ -24,85 +24,93 @@
       <div class="container padding-bottom-3x mb-2">
         <div class="row">
           <div class="col-md-6">
-            <form class="login-box" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <form class="login-box"  #loginForm="ngForm">
               <div class="row margin-bottom-1x">
-                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block facebook-btn" href="#"><i class="socicon-facebook"></i>&nbsp;Facebook login</a></div>
-                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block twitter-btn" href="#"><i class="socicon-twitter"></i>&nbsp;Twitter login</a></div>
-                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block google-btn" href="#"><i class="socicon-googleplus"></i>&nbsp;Google+ login</a></div>
+                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block facebook-btn" href="#"><i class="socicon-facebook"></i>&nbsp;Facebook</a></div>
+                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block twitter-btn" href="#"><i class="socicon-twitter"></i>&nbsp;Twitter</a></div>
+                <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block google-btn" href="#"><i class="socicon-googleplus"></i>&nbsp;Google+</a></div>
               </div>
-              <h4 class="margin-bottom-1x">Or using form below</h4>
+              <h4 class="margin-bottom-1x">Já possui cadastro? Entao entre com sua conta</h4>
               <div class="form-group input-group">
-                <input class="form-control" type="email" placeholder="Email" [(ngModel)]="login.email" name="email"required><span class="input-group-addon"><i class="icon-mail"></i></span>
+                  <md-form-field class="full-width">
+                    <input mdInput placeholder="E-mail" [(ngModel)]="login.email" name="email" type="email" required>
+                  </md-form-field>
               </div>
               <div class="form-group input-group">
-                <input class="form-control" type="password" placeholder="Password" [(ngModel)]="login.password"  name="password" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <md-form-field class="full-width">
+                    <input mdInput placeholder="Senha" [(ngModel)]="login.password" name="password" type="password" required>
+                  </md-form-field>
               </div>
-              <div class="d-flex flex-wrap justify-content-between padding-bottom-1x">
-                <label class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" checked><span class="custom-control-indicator"></span><span class="custom-control-description">Remember me</span>
-                </label><a class="navi-link" href="#">Forgot password?</a>
-              </div>
+              
               <div class="text-center text-sm-right">
-                <button class="btn btn-primary margin-bottom-none" type="button" [disabled]="!loginForm.form.valid" (click)="login(login);">Login</button>
+                <button md-raised-button color="primary" [disabled]="!loginForm.form.valid" (click)="login(login);">Login</button>
               </div>
             </form>
           </div>
           <div class="col-md-6">
             <div class="padding-top-3x hidden-md-up"></div>
-            <h3 class="margin-bottom-1x">No Account? Register</h3>
-            <p>Registration takes less than a minute but gives you full control over your orders.</p>
-            <form class="row"  (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <h3 class="margin-bottom-1x">Nao é cadastrado? Cadastre-se!</h3>
+            <p>Cadastro leva mmenos de um minuto e te garante controle total sobre seus pedidos e anuncios.</p>
+            <form class="row"  #registerForm="ngForm">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-fn">First Name</label>
-                  <input class="form-control" type="text" id="reg-fn" [(ngModel)]="user.firstName" name="firstName" required>
+                  <md-form-field>
+                    <input mdInput placeholder="Nome" [(ngModel)]="user.firstName" name="firstName" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-ln">Last Name</label>
-                  <input class="form-control" type="text" id="reg-ln" [(ngModel)]="user.lastName" name="lastName" required>
+                   <md-form-field>
+                    <input mdInput placeholder="Sobrenome" [(ngModel)]="user.lastName" name="lastName" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-email">E-mail Address</label>
-                  <input class="form-control" type="email" id="reg-email" [(ngModel)]="user.email"  name="email" required>
+                  <md-form-field>
+                    <input mdInput placeholder="E-mail" type="email" [(ngModel)]="user.email" name="email" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-phone">Phone Number</label>
-                  <input class="form-control" type="text" id="reg-phone" [(ngModel)]="user.phone" name="phone" required>
+                  <md-form-field>
+                    <input mdInput placeholder="Celular"  [(ngModel)]="user.phone" name="phone" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-pass">Apartamento</label>
-                  <input class="form-control" type="text" id="reg-pass" [(ngModel)]="user.apartment" name="apartment" required>
+                  <md-form-field>
+                    <input mdInput placeholder="Apartamento"  [(ngModel)]="user.apartment" name="apartment" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-pass-confirm">Torre</label>
-                  <input class="form-control" type="text" id="reg-pass-confirm" [(ngModel)]="user.tower" name="tower" required>
+                  <md-form-field>
+                    <input mdInput placeholder="Torre"  [(ngModel)]="user.tower" name="tower" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-pass">Password</label>
-                  <input class="form-control" type="password" id="reg-pass" [(ngModel)]="user.password" name="password" required>
+                  <md-form-field>
+                    <input mdInput placeholder="Senha"  type="password" [(ngModel)]="user.password" name="password" required>
+                  </md-form-field>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-pass-confirm">Confirm Password</label>
-                  <input class="form-control" type="password" id="reg-pass-confirm" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                  <md-form-field>
+                    <input mdInput placeholder="Confirme a senha"  type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                  </md-form-field>
                 </div>
               </div>
               
               <div class="col-12 text-center text-sm-right">
-                <button class="btn btn-primary margin-bottom-none" type="button" [disabled]="!registerForm.form.valid" (click)="save(user);" >Register</button>
+                <button md-raised-button color="primary" [disabled]="!registerForm.form.valid" (click)="save(registerForm);">Cadastrar</button>
               </div>
             </form>
           </div>

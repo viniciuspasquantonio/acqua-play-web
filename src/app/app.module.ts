@@ -49,6 +49,8 @@ import {AdLsComponent} from './ad/ad-ls.component';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert/alert.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule,MatTooltipModule,MatInputModule,MatGridListModule } from '@angular/material';
 
 
 
@@ -91,8 +93,20 @@ import { AlertService } from './alert/alert.service';
     HttpModule,
     JsonpModule,
     AppRoutingModule,
-    ImageUploadModule.forRoot()
-
+    ImageUploadModule.forRoot(),
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdMenuModule,
+    MdCardModule,
+    MdToolbarModule,
+    MdIconModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatGridListModule
      
   ],
   providers: [

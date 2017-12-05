@@ -29,11 +29,13 @@
               </div>
             </div>
             <h3 class="text-center mb-30">Encontre o que você está procurando!</h3>
-           		
+           	<md-grid-list cols="3" rowHeight="25">
+              <md-grid-tile *ngFor="let c of categories" role="listitem"
+                 >
+                <a (click)="searchByCategory(c);">{{c.name}}</a>
+              </md-grid-tile>
+            </md-grid-list>	
 			           
-                  <ul class="list-unstyled">
-                    <li class="col-sm-3" *ngFor="let c of categories"><a (click)="searchByCategory(c);">{{c.name}}</a></li>
-                 </ul>  
           </div>
 
         </div>
